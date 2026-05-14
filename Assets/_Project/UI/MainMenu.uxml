@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML
+    xmlns:ui="UnityEngine.UIElements"
+    xmlns:uie="UnityEditor.UIElements"
+    xsi="http://www.w3.org/2001/XMLSchema-instance"
+    engine="UnityEngine.UIElements"
+    editor="UnityEditor.UIElements"
+    noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd"
+    editor-extension-mode="False">
+    
+    <Style src="MainMenu.uss" />
+
+    <ui:VisualElement class="container">
+        <ui:Label text="ZEROS &amp; ONES" class="title" />
+        
+        <ui:Button name="BtnNewGame" text="NEW GAME" class="menu-button" />
+        <ui:Button name="BtnLoadGame" text="LOAD GAME" class="menu-button" />
+        <ui:Button name="BtnSettings" text="SETTINGS" class="menu-button" />
+        <ui:Button name="BtnExit" text="EXIT" class="menu-button" />
+        
+        <ui:Label name="LblComingSoon" text="Feature Coming Soon..." class="coming-soon-label" />
+    </ui:VisualElement>
+
+</ui:UXML>

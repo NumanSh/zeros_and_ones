@@ -10,9 +10,9 @@
 
 > **Goal**: Establish the folder structure, create the MainMenu scene, and configure Build Settings.
 
-- [ ] T001 Create folder structure: `Assets/_Project/Scripts/MainMenu/`, `Assets/_Project/Scripts/Core/`, `Assets/_Project/Scenes/`, `Assets/_Project/UI/`
-- [ ] T002 Create empty Unity scene file `Assets/_Project/Scenes/MainMenu.unity`
-- [ ] T003 Add `MainMenu` scene to Unity Build Settings as scene index 0 (default launch scene)
+- [x] T001 Create folder structure: `Assets/_Project/Scripts/MainMenu/`, `Assets/_Project/Scripts/Core/`, `Assets/_Project/Scenes/`, `Assets/_Project/UI/`
+- [x] T002 Create empty Unity scene file `Assets/_Project/Scenes/MainMenu.unity`
+- [x] T003 Add `MainMenu` scene to Unity Build Settings as scene index 0 (default launch scene)
 
 ---
 
@@ -20,9 +20,9 @@
 
 > **Goal**: Build the reusable core systems that all future features will depend on.
 
-- [ ] T004 Create `GameState` enum (MainMenu, InGame, Paused) in `Assets/_Project/Scripts/Core/GameState.cs`
-- [ ] T005 Create `MenuAction` enum (NewGame, LoadGame, Settings, Exit) in `Assets/_Project/Scripts/Core/MenuAction.cs`
-- [ ] T006 Create `GameManager.cs` singleton in `Assets/_Project/Scripts/Core/GameManager.cs` with scene loading and quit methods
+- [x] T004 Create `GameState` enum (MainMenu, InGame, Paused) in `Assets/_Project/Scripts/Core/GameState.cs`
+- [x] T005 Create `MenuAction` enum (NewGame, LoadGame, Settings, Exit) in `Assets/_Project/Scripts/Core/MenuAction.cs`
+- [x] T006 Create `GameManager.cs` singleton in `Assets/_Project/Scripts/Core/GameManager.cs` with scene loading and quit methods
 
 ---
 
@@ -31,10 +31,10 @@
 > **Goal**: Build the visual UI layout with all 4 buttons, styled with a dark technical theme.
 > **Story**: As a player, I want to see a clean menu with 4 options when I launch the game.
 
-- [ ] T007 [US1] Create `MainMenu.uxml` UI layout with vertical container and 4 buttons (New Game, Load Game, Settings, Exit) in `Assets/_Project/UI/MainMenu.uxml`
-- [ ] T008 [US1] Create `MainMenu.uss` stylesheet with dark theme: dark background (#0a0a0a), light text (#e0e0e0), monospaced font, centered layout in `Assets/_Project/UI/MainMenu.uss`
-- [ ] T009 [US1] Add hover effects in USS: button background lightens on hover, subtle scale transition in `Assets/_Project/UI/MainMenu.uss`
-- [ ] T010 [US1] Add a UIDocument component to the MainMenu scene and attach `MainMenu.uxml` as the source asset
+- [x] T007 [US1] Create `MainMenu.uxml` UI layout with vertical container and 4 buttons (New Game, Load Game, Settings, Exit) in `Assets/_Project/UI/MainMenu.uxml`
+- [x] T008 [US1] Create `MainMenu.uss` stylesheet with dark theme: dark background (#0a0a0a), light text (#e0e0e0), monospaced font, centered layout in `Assets/_Project/UI/MainMenu.uss`
+- [x] T009 [US1] Add hover effects in USS: button background lightens on hover, subtle scale transition in `Assets/_Project/UI/MainMenu.uss`
+- [x] T010 [US1] Add a UIDocument component to the MainMenu scene and attach `MainMenu.uxml` as the source asset
 
 ---
 
@@ -43,11 +43,11 @@
 > **Goal**: Wire up all 4 buttons to their respective actions.
 > **Story**: As a player, I want each button to perform its intended action (start game, exit, etc.).
 
-- [ ] T011 [US2] Create `MainMenuController.cs` in `Assets/_Project/Scripts/MainMenu/MainMenuController.cs` — query UI buttons by name and register click callbacks
-- [ ] T012 [US2] Implement "New Game" button handler: calls `GameManager.LoadScene("GameplayScene")` or logs "Loading gameplay..." if scene doesn't exist yet
-- [ ] T013 [US2] Implement "Exit" button handler: calls `Application.Quit()` and logs in Editor mode since Quit doesn't work in Play Mode
-- [ ] T014 [US2] Implement "Load Game" and "Settings" placeholder handlers: show a "Coming Soon" label in the UI or log message
-- [ ] T015 [US2] Attach `MainMenuController.cs` to a GameObject in the MainMenu scene
+- [x] T011 [US2] Create `MainMenuController.cs` in `Assets/_Project/Scripts/MainMenu/MainMenuController.cs` — query UI buttons by name and register click callbacks
+- [x] T012 [US2] Implement "New Game" button handler: calls `GameManager.LoadScene("GameplayScene")` or logs "Loading gameplay..." if scene doesn't exist yet
+- [x] T013 [US2] Implement "Exit" button handler: calls `Application.Quit()` and logs in Editor mode since Quit doesn't work in Play Mode
+- [x] T014 [US2] Implement "Load Game" and "Settings" placeholder handlers: show a "Coming Soon" label in the UI or log message
+- [x] T015 [US2] Attach `MainMenuController.cs` to a GameObject in the MainMenu scene
 
 ---
 
@@ -55,11 +55,11 @@
 
 > **Goal**: Finalize the scene, run all skill evaluation gates, and prepare for push.
 
-- [ ] T016 Test all 4 buttons in Unity Play Mode — verify correct behavior for each action
-- [ ] T017 Test UI responsiveness at 1920×1080 and 1280×720 resolutions — verify buttons remain centered
-- [ ] T018 Run **Skill Evaluation Gate** — Apply all 12+ skills (see Evaluation Matrix below) and document results in `specs/1-main-menu/evaluation-report.md`
-- [ ] T019 Fix any issues identified by skill evaluation gates
-- [ ] T020 Commit all changes to branch `1-main-menu` and push to GitHub
+- [x] T016 Test all 4 buttons in Unity Play Mode — verify correct behavior for each action
+- [x] T017 Test UI responsiveness at 1920×1080 and 1280×720 resolutions — verify buttons remain centered
+- [x] T018 Run **Skill Evaluation Gate** — Apply all 12+ skills (see Evaluation Matrix below) and document results in `specs/1-main-menu/evaluation-report.md`
+- [x] T019 Fix any issues identified by skill evaluation gates
+- [x] T020 Commit all changes to branch `1-main-menu` and push to GitHub
 
 ---
 
