@@ -30,12 +30,12 @@ namespace ZerosAndOnes.Managers
 
         public void LoadGameplayScene()
         {
-            LoadScene("ExplorationMap");
+            LoadScene("firstMap");
         }
 
         public void LoadScene(string sceneName)
         {
-            if (sceneName == "ExplorationMap")
+            if (sceneName == "firstMap")
             {
                 SetState(GameState.ExplorationMap);
             }

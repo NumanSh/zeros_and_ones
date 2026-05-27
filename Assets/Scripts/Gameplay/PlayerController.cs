@@ -105,9 +105,9 @@ namespace ZerosAndOnes.Gameplay
             }
 
             // Variable jump height cut-off
-            if (jumpReleased && _rb.linearVelocity.y > 0f)
+            if (jumpReleased && _rb.velocity.y > 0f)
             {
-                _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, _rb.linearVelocity.y * 0.5f);
+                _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y * 0.5f);
             }
 
             // Update animations
@@ -121,14 +121,14 @@ namespace ZerosAndOnes.Gameplay
                 // Disables gravity during climbing
                 _rb.gravityScale = 0f;
                 // Move vertically and horizontally (climbing movement)
-                _rb.linearVelocity = new Vector2(_horizontalInput * moveSpeed * 0.75f, _verticalInput * climbSpeed);
+                _rb.velocity = new Vector2(_horizontalInput * moveSpeed * 0.75f, _verticalInput * climbSpeed);
             }
             else
             {
                 // Re-enable gravity scale
                 _rb.gravityScale = _originalGravityScale;
                 // Standard horizontal running physics
-                _rb.linearVelocity = new Vector2(_horizontalInput * moveSpeed, _rb.linearVelocity.y);
+                _rb.velocity = new Vector2(_horizontalInput * moveSpeed, _rb.velocity.y);
             }
         }
 
@@ -148,17 +148,17 @@ namespace ZerosAndOnes.Gameplay
 
         private void Jump()
         {
-            _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, jumpForce);
+            _rb.velocity = new Vector2(_rb.velocity.x, jumpForce);
         }
 
         private void UpdateAnimations()
         {
             if (_animator == null) return;
 
-            _animator.SetBool(IsRunningHash, Mathf.Abs(_rb.linearVelocity.x) > 0.1f);
+            _animator.SetBool(IsRunningHash, Mathf.Abs(_rb.velocity.x) > 0.1f);
             _animator.SetBool(IsGroundedHash, _isGrounded);
             _animator.SetBool(IsClimbingHash, _isClimbing);
-            _animator.SetFloat(VerticalVelocityHash, _rb.linearVelocity.y);
+            _animator.SetFloat(VerticalVelocityHash, _rb.velocity.y);
         }
 
         private void OnTriggerEnter2D(Collider2D other)
