@@ -11,9 +11,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - background
+  - logic_workSpace
+  - logic_gates
   - 
   - 
   - 
@@ -40,4 +40,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: background
+    uniqueID: 2863242037
+    locked: 0
+  - name: logic_workSpace
+    uniqueID: 996850341
+    locked: 0
+  - name: logic_gates
+    uniqueID: 103921943
     locked: 0
