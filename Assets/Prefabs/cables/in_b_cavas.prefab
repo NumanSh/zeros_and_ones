@@ -1115,7 +1115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a214adce1d134e4baf38816aea40e43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 0
+  Name: 1
   bitSelectionPanel: {fileID: 2389557372795419811}
   panelOffset: {x: 2, y: 0.9, z: 0}
   truthTable: 

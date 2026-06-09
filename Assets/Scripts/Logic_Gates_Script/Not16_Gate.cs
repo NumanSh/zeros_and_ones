@@ -58,10 +58,10 @@ public class Not16_Gate : MonoBehaviour
     {
         // if (isConnected)
         // {
-            Out.SetTruthTable(Evaluate(input.getConnectedCable().GetTruthTable()));
-            Debug.Log("Input A notGate: " + string.Join(", ", Out.GetTruthTable()));
+        //     Out.SetTruthTable(Evaluate(input.getConnectedCable().GetTruthTable()));
+        //     Debug.Log("Input A notGate: " + string.Join(", ", Out.GetTruthTable()));
             
-        // }
+        // // }
         
     }
     public static List<Cable16bitTruthTable> TestIN()

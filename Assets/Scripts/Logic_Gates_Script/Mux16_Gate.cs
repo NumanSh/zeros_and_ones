@@ -75,13 +75,13 @@ public class Mux16_Gate : MonoBehaviour
     }
     private void UpdateTruthTable()
     {
-        Out.SetTruthTable(Evaluate(inputA.getConnectedCable().GetTruthTable(),inputB.getConnectedCable().GetTruthTable(),inputSel.getConnectedCable().GetTruthTable()));
-        List<Cable16bitTruthTable> newTruthTable=Out.GetTruthTable();
-        Debug.Log("Input A MuxGate: ");
-        for(int i=0;i<newTruthTable.Count;i++)
-        {
-            Debug.Log("  "+i +" "+ string.Join(", ", newTruthTable[i].truthTable));
-        }
+        // Out.SetTruthTable(Evaluate(inputA.getConnectedCable().GetTruthTable(),inputB.getConnectedCable().GetTruthTable(),inputSel.getConnectedCable().GetTruthTable()));
+        // List<Cable16bitTruthTable> newTruthTable=Out.GetTruthTable();
+        // Debug.Log("Input A MuxGate: ");
+        // for(int i=0;i<newTruthTable.Count;i++)
+        // {
+        //     Debug.Log("  "+i +" "+ string.Join(", ", newTruthTable[i].truthTable));
+        // }
         
     }
 

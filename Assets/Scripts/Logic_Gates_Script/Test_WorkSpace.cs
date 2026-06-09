@@ -721,7 +721,7 @@ public class Test_WorkSpace : MonoBehaviour
                 {
                     if (Name == cable16TruthTables[i].cables.Name)
                     {
-                        cable16TruthTables[i].cables.SetTruthTable(truthTable); 
+                        // cable16TruthTables[i].cables.SetTruthTable(truthTable); 
                         break;
                     }
                 }

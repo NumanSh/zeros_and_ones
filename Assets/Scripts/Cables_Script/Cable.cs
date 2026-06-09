@@ -89,6 +89,7 @@ public class Cable : MonoBehaviour
         
         if (isDragging )
         {
+            Debug.Log("dragging");
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             
             lineRenderer.SetPosition(1, new Vector3(mousePosition.x, mousePosition.y, 0f));
@@ -130,7 +131,7 @@ public class Cable : MonoBehaviour
             }
         }
 
-        // 3. عند رفع الإصبع عن زر الماوس
+    
         if (Input.GetMouseButtonDown(0))
         {
             if (isDragging && targetConnector != null)
