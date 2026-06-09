@@ -1,104 +1,65 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using ZerosAndOnes.Managers;
 
 namespace ZerosAndOnes.UI
 {
-    [RequireComponent(typeof(UIDocument))]
+    /// <summary>
+    /// Canvas (uGUI) main menu controller. Attach to the Canvas in the MainMenuMap scene.
+    /// Wires the New Game button to load the gameplay scene.
+    /// </summary>
     public class MainMenuController : MonoBehaviour
     {
-        private UIDocument _uiDocument;
-        private Label _lblComingSoon;
-        private Coroutine _comingSoonCoroutine;
+        [Tooltip("Optional: drag the New Game Button here. If left empty, it is found by the GameObject name below.")]
+        [SerializeField] private Button newGameButton;
 
-        private void Awake()
+        [Tooltip("Name of the New Game button GameObject (used only when the button reference above is empty).")]
+        [SerializeField] private string newGameButtonName = "NewGame";
+
+        [Tooltip("Scene loaded when New Game is clicked. Must be in Build Settings.")]
+        [SerializeField] private string gameplaySceneName = "firstMap";
+
+        private void Start()
         {
-            _uiDocument = GetComponent<UIDocument>();
-        }
-
-        private void OnEnable()
-        {
-            var root = _uiDocument.rootVisualElement;
-
-            if (root == null)
+            if (newGameButton == null)
             {
-                Debug.LogError("[MainMenuController] UIDocument has no root VisualElement. Is the UXML attached?");
-                return;
+                var go = GameObject.Find(newGameButtonName);
+                if (go != null) newGameButton = go.GetComponent<Button>();
             }
 
-            var btnNewGame = root.Q<Button>("BtnNewGame");
-            var btnLoadGame = root.Q<Button>("BtnLoadGame");
-            var btnSettings = root.Q<Button>("BtnSettings");
-            var btnExit = root.Q<Button>("BtnExit");
-            
-            _lblComingSoon = root.Q<Label>("LblComingSoon");
-
-            if (btnNewGame != null) btnNewGame.clicked += OnNewGameClicked;
-            if (btnLoadGame != null) btnLoadGame.clicked += OnLoadGameClicked;
-            if (btnSettings != null) btnSettings.clicked += OnSettingsClicked;
-            if (btnExit != null) btnExit.clicked += OnExitClicked;
+            if (newGameButton != null)
+            {
+                newGameButton.onClick.RemoveListener(StartNewGame);
+                newGameButton.onClick.AddListener(StartNewGame);
+            }
+            else
+            {
+                Debug.LogWarning($"[MainMenuController] New Game button not found (looked for '{newGameButtonName}'). " +
+                                 "Assign it in the Inspector or check the GameObject name.");
+            }
         }
 
-        private void OnNewGameClicked()
+        /// <summary>Loads the gameplay scene. Also usable directly from a Button OnClick in the Inspector.</summary>
+        public void StartNewGame()
         {
-            Debug.Log("[MainMenuController] New Game clicked");
+            Debug.Log("[MainMenuController] New Game clicked -> loading gameplay scene.");
+
             if (GameManager.Instance != null)
             {
                 GameManager.Instance.LoadGameplayScene();
+                return;
+            }
+
+            if (Application.CanStreamedLevelBeLoaded(gameplaySceneName))
+            {
+                SceneManager.LoadScene(gameplaySceneName);
             }
             else
             {
-                Debug.LogWarning("[MainMenuController] GameManager not found!");
+                Debug.LogError($"[MainMenuController] Scene '{gameplaySceneName}' is not in Build Settings. " +
+                               "Add it via File > Build Settings (or it cannot be loaded).");
             }
-        }
-
-        private void OnLoadGameClicked()
-        {
-            Debug.Log("[MainMenuController] Load Game clicked");
-            ShowComingSoonMessage();
-        }
-
-        private void OnSettingsClicked()
-        {
-            Debug.Log("[MainMenuController] Settings clicked");
-            ShowComingSoonMessage();
-        }
-
-        private void OnExitClicked()
-        {
-            Debug.Log("[MainMenuController] Exit clicked");
-            if (GameManager.Instance != null)
-            {
-                GameManager.Instance.QuitGame();
-            }
-            else
-            {
-#if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-#else
-                Application.Quit();
-#endif
-            }
-        }
-
-        private void ShowComingSoonMessage()
-        {
-            if (_lblComingSoon == null) return;
-
-            if (_comingSoonCoroutine != null)
-            {
-                StopCoroutine(_comingSoonCoroutine);
-            }
-            
-            _comingSoonCoroutine = StartCoroutine(ShowComingSoonRoutine());
-        }
-
-        private IEnumerator ShowComingSoonRoutine()
-        {
-            _lblComingSoon.AddToClassList("visible");
-            yield return new WaitForSeconds(2.0f);
-            _lblComingSoon.RemoveFromClassList("visible");
         }
     }
 }
