@@ -68,13 +68,13 @@ public class AND16_Gate : MonoBehaviour
     }
     private void UpdateTruthTable()
     {
-        Out.SetTruthTable(Evaluate(inputA.getConnectedCable().GetTruthTable(),inputB.getConnectedCable().GetTruthTable()));
-        List<Cable16bitTruthTable> new11TruthTable=Out.GetTruthTable();
-        Debug.Log("Input A ANDGate: ");
-        for(int i=0;i<new11TruthTable.Count;i++)
-        {
-            Debug.Log("  "+i +" "+ string.Join(", ", new11TruthTable[i].truthTable));
-        }
+        // Out.SetTruthTable(Evaluate(inputA.getConnectedCable().GetTruthTable(),inputB.getConnectedCable().GetTruthTable()));
+        // List<Cable16bitTruthTable> new11TruthTable=Out.GetTruthTable();
+        // Debug.Log("Input A ANDGate: ");
+        // for(int i=0;i<new11TruthTable.Count;i++)
+        // {
+        //     Debug.Log("  "+i +" "+ string.Join(", ", new11TruthTable[i].truthTable));
+        // }
         
         
     }

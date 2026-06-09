@@ -7,7 +7,7 @@ public class ButtonController_CableManager : MonoBehaviour
 {
     public  ConnectorType Name;
     public GameObject bitSelectionPanel;
-    public Vector3 panelOffset = new Vector3(100f, 0f, 0f);
+    public Vector3 panelOffset ;
     [SerializeField] public List<Cable16bitTruthTable> truthTable = new List<Cable16bitTruthTable>(new Cable16bitTruthTable[16]);
     [SerializeField] public Button myButton;
     // [SerializeField] public Button myButton1;
@@ -29,6 +29,11 @@ public class ButtonController_CableManager : MonoBehaviour
     public List<CableManager> GetSpawnedCable_managers()
     {
         return spawnedCables;
+    }
+
+    public Cable GetSelectedCable()
+    {
+        return selectedCable;
     }
 
     public void SetSelectedCable(Cable cable)

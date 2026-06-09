@@ -2,18 +2,38 @@ using UnityEngine;
 using UnityEngine.EventSystems; // ضروري لجلب نظام اللمس والضغط
 using System.Collections.Generic;
 using System.Collections;
+using System.Collections;
+
 public class HoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    // متغير عام لمعرفة حالة الضغط (يمكن قراءته من أي سكريبت آخر)
     public bool isPressed = false;
     [SerializeField] private GameObject prefabToSpawnCable;
     private Cable spawnedCables ;
     public GameObject bitSelectionPanel;
     public GameObject positionToSpawnCable;
+    private ButtonController16bit buttonController16bit;
     [SerializeField] public List<bool> truthTable = new List<bool>(){};
     private Vector3 panelOffset;
+    private bool turnUI=false;
     
+    [SerializeField] public CableTypes type;
+    [SerializeField] private GameObject canvas16bit;
 
+
+    public GameObject GetCanvas16bit()
+    {
+        return canvas16bit;
+    }
+
+    public bool GetTurnUI()
+    {
+        return turnUI;
+    }
+
+    public void SetTurnUI(bool value)
+    {
+        turnUI = value;
+    }
     public void SetTruthTable(List<bool> newTruthTable)
     {
         
@@ -30,6 +50,12 @@ public class HoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         }
     }
 
+    IEnumerator EnableSecondCanvas()
+    {
+        yield return null; 
+        canvas16bit.SetActive(true); 
+    }
+
     public void SetPanelOffset(Vector3 offset)
     {
         panelOffset = offset;
@@ -40,7 +66,7 @@ public class HoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
     IEnumerator WaitAndStartDrag()
     {
-        yield return new WaitForSeconds(10f); 
+        yield return new WaitForSeconds(101f); 
     }
     public void Creat_A_Cable()
     {
@@ -92,20 +118,35 @@ public class HoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         bitSelectionPanel.SetActive(false);
     }
 
-    // void Update()
-    // {
-    //     if (truthTable.Count == 0)
-    //     {
-    //         SetTruthTable(positionToSpawnCable.GetComponent<ButtonController1bit>().GetTruthTable());
-    //     }
-    // }
-
-    
+   
     public void OnPointerDown(PointerEventData eventData)
     {
-        isPressed = true;
-        Creat_A_Cable(); // يمكنك تعديل هذا الرقم ليمثل أي زر تريد
-        Debug.Log("Hold button is being pressed.");
+        // isPressed = true;
+        // Creat_A_Cable(); 
+        // Debug.Log("Hold button is being pressed.");
+        if (type == CableTypes.c1)
+        {
+            isPressed = true;
+            Creat_A_Cable(); 
+            Debug.Log("Hold button is being pressed.");
+        }
+        else if (type == CableTypes.c16)
+        {
+            
+            isPressed = true;
+            Debug.Log("Hold button is being pressed 16.");
+            // CreatUI16BitCable();
+            canvas16bit.SetActive(true);
+            bitSelectionPanel.SetActive(false);
+            // StartCoroutine(EnableSecondCanvas());
+            SetTurnUI(true);
+            
+            
+        }
+        else
+        {
+            Debug.LogError("Invalid cable type.");
+        }
     }
 
     // تتنفذ تلقائياً أول ما يرفع اللاعب إصبعه عن الزر
