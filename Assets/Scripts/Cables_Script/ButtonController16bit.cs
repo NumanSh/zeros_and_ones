@@ -10,10 +10,12 @@ public class ButtonController16bit : MonoBehaviour
     public Vector3 panelOffset ;
     [SerializeField] public List<Cable16bitTruthTable> truthTable = new List<Cable16bitTruthTable>();
     [SerializeField] public Button All16bits;
+    [SerializeField] public Button AddButton;
     [SerializeField] private GameObject prefabToSpawnCable;
     private List<Cable> spawnedCables = new List<Cable>(new Cable[16]);
     [SerializeField] private List<GameObject> bitButtons = new List<GameObject>(){};
     
+    private int index=0;
     // public HoldButton myHoldButton;
     
     void Start()
@@ -24,6 +26,17 @@ public class ButtonController16bit : MonoBehaviour
         if (holdButton != null)         {
             // holdButton.SetTruthTable(truthTable[0].truthTable);
             holdButton.SetPanelOffset(panelOffset);
+            if (holdButton.type == CableTypes.c16)
+            {
+                holdButton.SetTruthTable16(truthTable);
+            }
+            else
+            {
+                if (truthTable.Count > 0)
+                {
+                    holdButton.SetTruthTable(truthTable[0].truthTable);
+                }
+            }
             holdButton.SetPrefabToSpawnCable(prefabToSpawnCable);
         }
         else
@@ -37,6 +50,17 @@ public class ButtonController16bit : MonoBehaviour
                 HoldButton holdButton1 = bitButtons[i].GetComponent<HoldButton>();
                 if (holdButton1 != null)         {
                     // holdButton1.SetTruthTable(truthTable[i].truthTable);
+                    if (holdButton1.type == CableTypes.c16)
+                    {
+                        holdButton1.SetTruthTable16(truthTable);
+                    }
+                    else
+                    {
+                        if (truthTable.Count > 0)
+                        {
+                            holdButton1.SetTruthTable(truthTable[i].truthTable);
+                        }
+                    }
                     holdButton1.SetPanelOffset(panelOffset);
                     holdButton1.SetPrefabToSpawnCable(prefabToSpawnCable);
                 }
@@ -51,6 +75,10 @@ public class ButtonController16bit : MonoBehaviour
                 Debug.Log($"the button in index {i} dose not exist");
             }
         }
+        if (AddButton != null)
+        {
+            AddButton.onClick.AddListener(AddButtonListener);
+        }
         // All16bits.onClick.AddListener(All16bitsListener);
     }
 
@@ -60,10 +88,28 @@ public class ButtonController16bit : MonoBehaviour
         {
             if (bitButtons[i] != null)
             {
-                bitButtons[i].GetComponent<HoldButton>().SetTruthTable(truthTable[i].truthTable);
+                HoldButton holdButton1 = bitButtons[i].GetComponent<HoldButton>();
+                if (holdButton1 != null)
+                {
+                    if (holdButton1.type == CableTypes.c16)
+                    {
+                        holdButton1.SetTruthTable16(truthTable);
+                    }
+                    else
+                    {
+                        if (truthTable.Count > 0)
+                        {
+                            holdButton1.SetTruthTable(truthTable[0].truthTable);
+                        }
+                    }
+                }
+                // bitButtons[i].GetComponent<HoldButton>().SetTruthTable(truthTable[i].truthTable);
             }
         }
-        All16bits.GetComponent<HoldButton16>().SetTruthTable(truthTable);
+        if (All16bits != null)
+        {
+            All16bits.GetComponent<HoldButton16>().SetTruthTable(truthTable);
+        }
     }
 
     
@@ -93,6 +139,25 @@ public class ButtonController16bit : MonoBehaviour
         
     // }
 
+    public void AddButtonListener()
+    {
+        // Debug.Log("Selected add button");
+        if(index <10)
+        {
+            index++;
+            bitButtons[index].SetActive(true);
+        } 
+        if(index == 10)
+        {
+            AddButton.interactable = false;
+        }
+        else
+        {
+        //    Debug.Log("you can not add button any more"); 
+        } 
+        
+    }
+
     
 
     void OnMouseDown()
@@ -101,7 +166,6 @@ public class ButtonController16bit : MonoBehaviour
         bitSelectionPanel.SetActive(true);
     }
 
-    
    
 
 }

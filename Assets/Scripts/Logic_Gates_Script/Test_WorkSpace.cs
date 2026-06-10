@@ -176,8 +176,8 @@ public class Test_WorkSpace : MonoBehaviour
     private void InC16_Gate_tests()
     {
         SearchAndPrintCable(ConnectorType.InA,Inc16_Gate.TestA(),CableTypes.c16);
-        SearchAndPrintCable(ConnectorType.InB,Inc16_Gate.TestB(),CableTypes.c16);
-        SearchAndPrintCable(ConnectorType.InC,Inc16_Gate.TestC(),CableTypes.c16);
+        // SearchAndPrintCable(ConnectorType.InB,Inc16_Gate.TestB(),CableTypes.c16);
+        // SearchAndPrintCable(ConnectorType.InC,Inc16_Gate.TestC(),CableTypes.c16);
     }
     private void Or4Way_Gate_tests()
     {
@@ -721,7 +721,7 @@ public class Test_WorkSpace : MonoBehaviour
                 {
                     if (Name == cable16TruthTables[i].cables.Name)
                     {
-                        // cable16TruthTables[i].cables.SetTruthTable(truthTable); 
+                        cable16TruthTables[i].cables.SetTruthTable(truthTable); 
                         break;
                     }
                 }
