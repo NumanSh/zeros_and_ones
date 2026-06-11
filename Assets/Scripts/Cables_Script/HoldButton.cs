@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems; // ضروري لجلب نظام اللمس والضغط
 using System.Collections.Generic;
 using System.Collections;
-using System.Collections;
+
 
 public class HoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
@@ -13,13 +13,14 @@ public class HoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public GameObject positionToSpawnCable;
     private ButtonController16bit buttonController16bit;
     [SerializeField] public List<bool> truthTable = new List<bool>(){};
+    [SerializeField] public List<Cable16bitTruthTable> truthTable16 = new List<Cable16bitTruthTable>();
     private Vector3 panelOffset;
     private bool turnUI=false;
     
     [SerializeField] public CableTypes type;
     [SerializeField] private GameObject canvas16bit;
 
-
+    [SerializeField] public GameObject end_point;
     public GameObject GetCanvas16bit()
     {
         return canvas16bit;
@@ -34,9 +35,17 @@ public class HoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         turnUI = value;
     }
+
+    public void SetTruthTable16(List<Cable16bitTruthTable> newTruthTable)
+    {
+        truthTable16.Clear();
+        foreach (var item in newTruthTable)
+        {
+            truthTable16.Add(new Cable16bitTruthTable(new List<bool>(item.truthTable))); 
+        }
+    }
     public void SetTruthTable(List<bool> newTruthTable)
     {
-        
         if (truthTable.Count != newTruthTable.Count)
         {
             truthTable = new List<bool>(newTruthTable); 
@@ -138,6 +147,10 @@ public class HoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             // CreatUI16BitCable();
             canvas16bit.SetActive(true);
             bitSelectionPanel.SetActive(false);
+            if (end_point != null)
+            {
+                end_point.GetComponent<ButtonController16bit>().SetTruthTable(truthTable16);
+            }
             // StartCoroutine(EnableSecondCanvas());
             SetTurnUI(true);
             

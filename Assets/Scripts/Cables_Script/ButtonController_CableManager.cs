@@ -70,10 +70,10 @@ public class ButtonController_CableManager : MonoBehaviour
     public void ShowBitSelectionUI()
     {
         // Debug.Log($"sameh16 hon bas ");
-        Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
+        // Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
         bitSelectionPanel.SetActive(true);
         // Debug.Log($"New cable active: {bitSelectionPanel.activeSelf}");
-        bitSelectionPanel.transform.position = screenPos + panelOffset;
+        // bitSelectionPanel.transform.position = screenPos + panelOffset;
     }
     public void CloseBitSelectionUI()
     {
@@ -263,145 +263,145 @@ public class ButtonController_CableManager : MonoBehaviour
     //     ShowBitSelectionUI();
     // }
 
-    void Update()
-    {
-        // if( iselected )
-        // {
+    // void Update()
+    // {
+    //     // if( iselected )
+    //     // {
             
-        //     bitSelectionPanel.SetActive(true);
-        // }
-        // if(!iselected )
-        // {
+    //     //     bitSelectionPanel.SetActive(true);
+    //     // }
+    //     // if(!iselected )
+    //     // {
             
-        //     bitSelectionPanel.SetActive();
-        // }
-        // for (int i=0;i<index;i++)
-        // {
-        //     if(spawnedCables[i].CanConnect())
-        //     {
-        //         Debug.Log($"Selected loop : {i}");
-        //         bitButtons[i].interactable =true;
-        //     }
-        // }
-        // if (Input.GetMouseButtonDown(0))
-        // {
-        //     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //     if (Physics.Raycast(ray, out RaycastHit hitInfo))
-        //     {
-        //         Canvas hitCanvas = hitInfo.collider.gameObject.GetComponentInParent<Canvas>();
-        //         if (hitCanvas != null && hitCanvas == canvas)
-        //         {
-        //             ShowBitSelectionUI();
-        //         }
-        //     }
-        // }
-        if (bitSelectionPanel.activeSelf)
-        {
-            if (Input.GetKeyDown(KeyCode.Alpha0) && bitButtons[0] != null && bitButtons[0].interactable && iselected)
-            {
-                // bitButtons[0].onClick.Invoke();
-                // Debug.Log("الكائن ظهر!00000");
-                bitButtons[0].interactable = false;
-                // bitSelectionPanel.SetActive(false);
-                OnBitSelected(0);
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha1) && bitButtons[1] != null && bitButtons[1].interactable && iselected)
-            {
-                // bitButtons[1].onClick.Invoke();
-                bitSelectionPanel.SetActive(false);
-                OnBitSelected(1);
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha2) && bitButtons[2] != null && bitButtons[2].interactable && iselected)
-            {
-                // bitButtons[2].onClick.Invoke();
-                bitSelectionPanel.SetActive(false);
-                OnBitSelected(2);
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha3) && bitButtons[3] != null && bitButtons[3].interactable && iselected)
-            {
-                // bitButtons[3].onClick.Invoke();
-                bitSelectionPanel.SetActive(false);
-                OnBitSelected(3);
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha4) && bitButtons[4] != null && bitButtons[4].interactable && iselected)
-            {
-                // bitButtons[4].onClick.Invoke();
-                bitSelectionPanel.SetActive(false);
-                OnBitSelected(4);
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha5) && bitButtons[5] != null && bitButtons[5].interactable && iselected)
-            {
-                // bitButtons[5].onClick.Invoke();
-                bitSelectionPanel.SetActive(false);
-                OnBitSelected(5);
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha6) && bitButtons[6] != null && bitButtons[6].interactable && iselected)
-            {
-                // bitButtons[6].onClick.Invoke();
-                bitSelectionPanel.SetActive(false);
-                OnBitSelected(6);
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha7) && bitButtons[7] != null && bitButtons[7].interactable && iselected)
-            {
-                // bitButtons[7].onClick.Invoke();
-                bitSelectionPanel.SetActive(false);
-                OnBitSelected(7);
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha8) && bitButtons[8] != null && bitButtons[8].interactable && iselected)
-            {
-                // bitButtons[8].onClick.Invoke();
-                bitSelectionPanel.SetActive(false);
-                OnBitSelected(8);
+    //     //     bitSelectionPanel.SetActive();
+    //     // }
+    //     // for (int i=0;i<index;i++)
+    //     // {
+    //     //     if(spawnedCables[i].CanConnect())
+    //     //     {
+    //     //         Debug.Log($"Selected loop : {i}");
+    //     //         bitButtons[i].interactable =true;
+    //     //     }
+    //     // }
+    //     // if (Input.GetMouseButtonDown(0))
+    //     // {
+    //     //     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+    //     //     if (Physics.Raycast(ray, out RaycastHit hitInfo))
+    //     //     {
+    //     //         Canvas hitCanvas = hitInfo.collider.gameObject.GetComponentInParent<Canvas>();
+    //     //         if (hitCanvas != null && hitCanvas == canvas)
+    //     //         {
+    //     //             ShowBitSelectionUI();
+    //     //         }
+    //     //     }
+    //     // }
+    //     if (bitSelectionPanel.activeSelf)
+    //     {
+    //         if (Input.GetKeyDown(KeyCode.Alpha0) && bitButtons[0] != null && bitButtons[0].interactable && iselected)
+    //         {
+    //             // bitButtons[0].onClick.Invoke();
+    //             // Debug.Log("الكائن ظهر!00000");
+    //             bitButtons[0].interactable = false;
+    //             // bitSelectionPanel.SetActive(false);
+    //             OnBitSelected(0);
+    //         }
+    //         else if (Input.GetKeyDown(KeyCode.Alpha1) && bitButtons[1] != null && bitButtons[1].interactable && iselected)
+    //         {
+    //             // bitButtons[1].onClick.Invoke();
+    //             bitSelectionPanel.SetActive(false);
+    //             OnBitSelected(1);
+    //         }
+    //         else if (Input.GetKeyDown(KeyCode.Alpha2) && bitButtons[2] != null && bitButtons[2].interactable && iselected)
+    //         {
+    //             // bitButtons[2].onClick.Invoke();
+    //             bitSelectionPanel.SetActive(false);
+    //             OnBitSelected(2);
+    //         }
+    //         else if (Input.GetKeyDown(KeyCode.Alpha3) && bitButtons[3] != null && bitButtons[3].interactable && iselected)
+    //         {
+    //             // bitButtons[3].onClick.Invoke();
+    //             bitSelectionPanel.SetActive(false);
+    //             OnBitSelected(3);
+    //         }
+    //         else if (Input.GetKeyDown(KeyCode.Alpha4) && bitButtons[4] != null && bitButtons[4].interactable && iselected)
+    //         {
+    //             // bitButtons[4].onClick.Invoke();
+    //             bitSelectionPanel.SetActive(false);
+    //             OnBitSelected(4);
+    //         }
+    //         else if (Input.GetKeyDown(KeyCode.Alpha5) && bitButtons[5] != null && bitButtons[5].interactable && iselected)
+    //         {
+    //             // bitButtons[5].onClick.Invoke();
+    //             bitSelectionPanel.SetActive(false);
+    //             OnBitSelected(5);
+    //         }
+    //         else if (Input.GetKeyDown(KeyCode.Alpha6) && bitButtons[6] != null && bitButtons[6].interactable && iselected)
+    //         {
+    //             // bitButtons[6].onClick.Invoke();
+    //             bitSelectionPanel.SetActive(false);
+    //             OnBitSelected(6);
+    //         }
+    //         else if (Input.GetKeyDown(KeyCode.Alpha7) && bitButtons[7] != null && bitButtons[7].interactable && iselected)
+    //         {
+    //             // bitButtons[7].onClick.Invoke();
+    //             bitSelectionPanel.SetActive(false);
+    //             OnBitSelected(7);
+    //         }
+    //         else if (Input.GetKeyDown(KeyCode.Alpha8) && bitButtons[8] != null && bitButtons[8].interactable && iselected)
+    //         {
+    //             // bitButtons[8].onClick.Invoke();
+    //             bitSelectionPanel.SetActive(false);
+    //             OnBitSelected(8);
 
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha9) && bitButtons[9] != null && bitButtons[9].interactable && iselected)
-            {
-                // bitButtons[9].onClick.Invoke();
-                bitSelectionPanel.SetActive(false);
-                OnBitSelected(9);
-            }
-            // مفاتيح بديلة لـ 10 إلى 15 (لأن KeyCode.10 إلى KeyCode.15 مش موجودة)
-            else if (Input.GetKeyDown(KeyCode.Z) && bitButtons[10] != null && bitButtons[10].interactable && iselected)
-            {
-                // bitButtons[10].onClick.Invoke();
-                bitSelectionPanel.SetActive(false);
-                OnBitSelected(10);
-            }
-            else if (Input.GetKeyDown(KeyCode.X) && bitButtons[11] != null && bitButtons[11].interactable && iselected)
-            {
-                // bitButtons[11].onClick.Invoke();
-                bitSelectionPanel.SetActive(false);
-                OnBitSelected(11);
-            }
-            else if (Input.GetKeyDown(KeyCode.C) && bitButtons[12] != null && bitButtons[12].interactable && iselected)
-            {
-                // bitButtons[12].onClick.Invoke();
-                bitSelectionPanel.SetActive(false);
-                OnBitSelected(12);
-            }
-            else if (Input.GetKeyDown(KeyCode.V) && bitButtons[13] != null && bitButtons[13].interactable && iselected)
-            {
-                // bitButtons[13].onClick.Invoke();
-                bitSelectionPanel.SetActive(false);
-                OnBitSelected(13);
-            }
-            else if (Input.GetKeyDown(KeyCode.B) && bitButtons[14] != null && bitButtons[14].interactable && iselected)
-            {
-                // bitButtons[14].onClick.Invoke();
-                bitSelectionPanel.SetActive(false);
-                OnBitSelected(14);
-            }
-            else if (Input.GetKeyDown(KeyCode.N) && bitButtons[15] != null && bitButtons[15].interactable && iselected)
-            {
-                // bitButtons[15].onClick.Invoke();
-                bitSelectionPanel.SetActive(false);
-                OnBitSelected(15);
-            }
+    //         }
+    //         else if (Input.GetKeyDown(KeyCode.Alpha9) && bitButtons[9] != null && bitButtons[9].interactable && iselected)
+    //         {
+    //             // bitButtons[9].onClick.Invoke();
+    //             bitSelectionPanel.SetActive(false);
+    //             OnBitSelected(9);
+    //         }
+    //         // مفاتيح بديلة لـ 10 إلى 15 (لأن KeyCode.10 إلى KeyCode.15 مش موجودة)
+    //         else if (Input.GetKeyDown(KeyCode.Z) && bitButtons[10] != null && bitButtons[10].interactable && iselected)
+    //         {
+    //             // bitButtons[10].onClick.Invoke();
+    //             bitSelectionPanel.SetActive(false);
+    //             OnBitSelected(10);
+    //         }
+    //         else if (Input.GetKeyDown(KeyCode.X) && bitButtons[11] != null && bitButtons[11].interactable && iselected)
+    //         {
+    //             // bitButtons[11].onClick.Invoke();
+    //             bitSelectionPanel.SetActive(false);
+    //             OnBitSelected(11);
+    //         }
+    //         else if (Input.GetKeyDown(KeyCode.C) && bitButtons[12] != null && bitButtons[12].interactable && iselected)
+    //         {
+    //             // bitButtons[12].onClick.Invoke();
+    //             bitSelectionPanel.SetActive(false);
+    //             OnBitSelected(12);
+    //         }
+    //         else if (Input.GetKeyDown(KeyCode.V) && bitButtons[13] != null && bitButtons[13].interactable && iselected)
+    //         {
+    //             // bitButtons[13].onClick.Invoke();
+    //             bitSelectionPanel.SetActive(false);
+    //             OnBitSelected(13);
+    //         }
+    //         else if (Input.GetKeyDown(KeyCode.B) && bitButtons[14] != null && bitButtons[14].interactable && iselected)
+    //         {
+    //             // bitButtons[14].onClick.Invoke();
+    //             bitSelectionPanel.SetActive(false);
+    //             OnBitSelected(14);
+    //         }
+    //         else if (Input.GetKeyDown(KeyCode.N) && bitButtons[15] != null && bitButtons[15].interactable && iselected)
+    //         {
+    //             // bitButtons[15].onClick.Invoke();
+    //             bitSelectionPanel.SetActive(false);
+    //             OnBitSelected(15);
+    //         }
             
-        }
+    //     }
 
 
 
-    }
+    // }
 
 }

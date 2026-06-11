@@ -82,14 +82,22 @@ public class Cable : MonoBehaviour
         lineRenderer.SetPosition(1, endPoint.position); 
     }
 
-
+    public void Disconnect()
+    {
+        if (CableManager1 != null)
+        {
+            CableManager1.DisconnectCable();
+            CableManager1 = null;
+        }
+        lineRenderer.SetPosition(1, new Vector3(endPoint.position.x, endPoint.position.y, 0f));
+    }
 
     void Update()
     {
         
         if (isDragging )
         {
-            Debug.Log("dragging");
+            // Debug.Log("dragging");
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             
             lineRenderer.SetPosition(1, new Vector3(mousePosition.x, mousePosition.y, 0f));
@@ -109,7 +117,7 @@ public class Cable : MonoBehaviour
                 {
                     connectorCableManager.SetIsSelected(true);
                     connectorCableManager.SetSelectedCable(this);
-                    connectorCableManager.ShowBitSelectionUI();
+                    // connectorCableManager.ShowBitSelectionUI();
                     ButtonController = connectorCableManager;
                 }
                 else
@@ -134,6 +142,13 @@ public class Cable : MonoBehaviour
     
         if (Input.GetMouseButtonDown(0))
         {
+            if (ButtonController != null && isDragging)
+            {
+                ButtonController.ShowBitSelectionUI();
+                lineRenderer.SetPosition(1, new Vector3(ButtonController.transform.position.x, ButtonController.transform.position.y, 0f));
+                isDragging = false;
+                return;
+            }
             if (isDragging && targetConnector != null)
             {
                 if (CableManager1 != null)
@@ -141,10 +156,7 @@ public class Cable : MonoBehaviour
                     CableManager1.DisconnectCable();
                     CableManager1 = null;
                 }
-                if (ButtonController != null)
-                {
-                    ButtonController.CloseBitSelectionUI();
-                }
+                
 
                 lineRenderer.SetPosition(1, new Vector3(targetConnector.transform.position.x, targetConnector.transform.position.y, 0f));
                 targetConnector.ConnectCable(this);
@@ -160,7 +172,7 @@ public class Cable : MonoBehaviour
         }
 
         // 4. إذا لم يكن هناك سحب والكابل غير موصول
-        if (endPoint != null && !isDragging && targetConnector == null)
+        if (endPoint != null && !isDragging && targetConnector == null && ButtonController == null)
         {
             if (CableManager1 != null)
             {

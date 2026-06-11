@@ -16,6 +16,7 @@ public class HoldButtonCableManager : MonoBehaviour, IPointerDownHandler, IPoint
     private Vector3 panelOffset;
     public int bitIndex;
    
+    
 
     
 
@@ -31,9 +32,22 @@ public class HoldButtonCableManager : MonoBehaviour, IPointerDownHandler, IPoint
    
     public void Creat_A_Cable()
     {
+        ButtonController_CableManager buttonController =positionToSpawnCable.GetComponent<ButtonController_CableManager>();
+        if (buttonController == null)
+        {
+            Debug.LogError("ButtonController_CableManager component not found on positionToSpawnCable.");
+            return;
+        }
+        
+        
+        
         if (spawnedCables != null)
         {
             Debug.Log($"i have a cable on button");
+            
+            // buttonController.GetSelectedCable().Disconnect();
+            buttonController.CloseBitSelectionUI();
+            
         }
         else
         {
@@ -55,35 +69,26 @@ public class HoldButtonCableManager : MonoBehaviour, IPointerDownHandler, IPoint
                     {
                         spawnedCables = cableScript;
                         // Debug.Log($"sameh {spawnedCables[bitIndex] == null} cable manager");
-                        if (!cableScript.CanConnect() )
+                        
+                            
+                        Cable selectedCable = buttonController.GetSelectedCable();
+                        if(selectedCable != null)
                         {
-                            Debug.Log("it is full");
+                            cableScript.ConnectCable(selectedCable);
+                            buttonController.truthTable[bitIndex].truthTable = new List<bool>(selectedCable.truthTable);
+                            truthTable[bitIndex].truthTable = new List<bool>(selectedCable.truthTable);
+                            // selectedCable.SetButton_cableManager( bitButtons[bitIndex]);
+                            selectedCable.SetTargetConnector(cableScript);
+                            // index++;
+                        
+                            // printALLTruthTables();
+                            Debug.Log("selectedCable  wall3at");
                         }
                         else
                         {
-                            ButtonController_CableManager buttonController =positionToSpawnCable.GetComponent<ButtonController_CableManager>();
-                            if (buttonController == null)
-                            {
-                                Debug.LogError("ButtonController_CableManager component not found on positionToSpawnCable.");
-                                return;
-                            }
-                            Cable selectedCable = buttonController.GetSelectedCable();
-                            if(selectedCable != null)
-                            {
-                                cableScript.ConnectCable(selectedCable);
-                                truthTable[bitIndex].truthTable = new List<bool>(selectedCable.truthTable);
-                                // selectedCable.SetButton_cableManager( bitButtons[bitIndex]);
-                                // selectedCable.SetTargetConnector(cableScript);
-                                // index++;
-                            
-                                // printALLTruthTables();
-                                Debug.Log("selectedCable  wall3at");
-                            }
-                            else
-                            {
-                                Debug.Log("selectedCable is null wall3at");
-                            }
+                            Debug.Log("selectedCable is null wall3at");
                         }
+                        
                         // Debug.Log("dragging");
                     }
                     else
@@ -108,7 +113,7 @@ public class HoldButtonCableManager : MonoBehaviour, IPointerDownHandler, IPoint
     {
         
         isPressed = true;
-        // Creat_A_Cable(); 
+        Creat_A_Cable(); 
         Debug.Log("Hold button is being pressed.");
     }
 
