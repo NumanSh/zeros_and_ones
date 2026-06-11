@@ -10,7 +10,7 @@ namespace ZerosAndOnes.EditorScripts
 {
     public static class SetupExplorationMap
     {
-        [MenuItem("Zeros & Ones/Setup Exploration Map Scene")]
+        [MenuItem("ZerosAndOnes/Setup Exploration Map Scene")]
         public static void SetupScene()
         {
             string scenePath = "Assets/Scenes/ExplorationMap.unity";
