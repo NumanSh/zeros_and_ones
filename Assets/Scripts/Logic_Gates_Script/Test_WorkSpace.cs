@@ -58,6 +58,11 @@ public class Test_WorkSpace : MonoBehaviour
     [SerializeField] private List<CableManagerTruthTableT> cableManagaerTruthTables = new List<CableManagerTruthTableT>(){};
     [SerializeField] private List<CableTruthTable16bit> cable16TruthTables = new List<CableTruthTable16bit>(){};
     [SerializeField] private List<CableManagerTruthTable16bit> cableManagaer16TruthTables = new List<CableManagerTruthTable16bit>(){};
+    
+    [SerializeField] public GameObject challenge;
+
+    [SerializeField] public GameObject challengeUI;
+
     private bool isSolves =false;
     private bool isSolves16 =false;
     private bool isAllCorrect16 =false;
