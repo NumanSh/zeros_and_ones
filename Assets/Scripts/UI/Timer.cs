@@ -1,10 +1,10 @@
 using UnityEngine;
-using TMPro; // خطوة إجبارية لتشغيل الـ TextMeshPro
+using TMPro;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField] public TextMeshProUGUI timerText; // سحب عنصر النص هنا
-    [SerializeField] private float timeRemaining = 60f; // وقت العداد بالثواني
+    [SerializeField] public TextMeshProUGUI timerText; 
+    [SerializeField] private float timeRemaining = 60f; 
     private bool isTimerRunning = true;
 
     void Update()
@@ -20,18 +20,36 @@ public class Timer : MonoBehaviour
             {
                 timeRemaining = 0;
                 isTimerRunning = false;
-                // يمكنك هنا إضافة أي حدث عند انتهاء الوقت (مثل Game Over)
+               
             }
         }
     }
 
-    // دالة لتحويل الثواني إلى صيغة دقائق وثواني وعرضها
+   
     void DisplayTime(float timeToDisplay)
     {
         float minutes = Mathf.FloorToInt(timeToDisplay / 60); 
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
-        // تحديث النص في الواجهة ليظهر بالشكل 00:00
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        if (timeToDisplay < 60f)
+        {
+            timerText.color = Color.red; 
+        }
+        else
+        {
+            timerText.color = Color.black; 
+        }
+    }
+
+    public bool PassChallenge()
+    {
+        if (isTimerRunning)
+        {
+            Debug.Log("Challenge Passed!");
+            return true;
+        }
+        Debug.Log("Challenge Failed!");
+        return false;
     }
 }
