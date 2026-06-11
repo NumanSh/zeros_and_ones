@@ -20,6 +20,8 @@ namespace ZerosAndOnes.Gameplay
         [SerializeField] private AudioClip appearSound;
         [Range(0f, 1f)]
         [SerializeField] private float soundVolume = 1f;
+        [Tooltip("If enabled, the image stays visible exactly as long as the sound plays, then hides for 'Interval' seconds.")]
+        [SerializeField] private bool syncVisibleTimeToSound = true;
 
         private SpriteRenderer _spriteRenderer;
         private Image _uiImage;
@@ -53,17 +55,35 @@ namespace ZerosAndOnes.Gameplay
         private void Update()
         {
             _timer += Time.deltaTime;
-            if (_timer >= interval)
+            if (_timer >= CurrentStateDuration())
             {
                 _timer = 0f;
                 _visible = !_visible;
                 ApplyVisibility();
 
-                if (_visible && appearSound != null)
+                if (appearSound != null)
                 {
-                    _audioSource.PlayOneShot(appearSound, soundVolume);
+                    if (_visible)
+                    {
+                        _audioSource.PlayOneShot(appearSound, soundVolume);
+                    }
+                    else
+                    {
+                        // Cut the sound off together with the image.
+                        _audioSource.Stop();
+                    }
                 }
             }
+        }
+
+        private float CurrentStateDuration()
+        {
+            // While visible, optionally stay on screen for the length of the sound.
+            if (_visible && syncVisibleTimeToSound && appearSound != null)
+            {
+                return appearSound.length;
+            }
+            return interval;
         }
 
         private void ApplyVisibility()
