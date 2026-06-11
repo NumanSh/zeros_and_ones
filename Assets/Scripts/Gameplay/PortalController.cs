@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using ZerosAndOnes.Managers;
 
 namespace ZerosAndOnes.Gameplay
@@ -12,6 +13,7 @@ namespace ZerosAndOnes.Gameplay
         [SerializeField] private bool isLocked = false;
 
         private Collider2D _collider;
+        private bool _isPlayerInside = false;
 
         private void Awake()
         {
@@ -20,28 +22,50 @@ namespace ZerosAndOnes.Gameplay
             _collider.isTrigger = true;
         }
 
+        private void Update()
+        {
+            if (_isPlayerInside && !isLocked)
+            {
+                // Require pressing Up Arrow or W to enter the portal
+                if (Keyboard.current != null && 
+                    (Keyboard.current.upArrowKey.wasPressedThisFrame || Keyboard.current.wKey.wasPressedThisFrame))
+                {
+                    EnterPortal();
+                }
+            }
+        }
+
         private void OnTriggerEnter2D(Collider2D other)
         {
             // Verify if colliding object has PlayerController
             PlayerController player = other.GetComponent<PlayerController>();
             if (player != null)
             {
-                if (isLocked)
-                {
-                    Debug.Log($"[PortalController] Portal {portalID} is locked.");
-                    return;
-                }
+                _isPlayerInside = true;
+                Debug.Log($"[PortalController] Player is standing at portal {portalID}. Press Up Arrow or W to enter.");
+            }
+        }
 
-                Debug.Log($"[PortalController] Player entered portal {portalID}. Transitioning to scene: {targetSceneName}");
-                
-                if (GameManager.Instance != null)
-                {
-                    GameManager.Instance.LoadScene(targetSceneName);
-                }
-                else
-                {
-                    Debug.LogWarning("[PortalController] GameManager instance not found, unable to transition scene.");
-                }
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            PlayerController player = other.GetComponent<PlayerController>();
+            if (player != null)
+            {
+                _isPlayerInside = false;
+            }
+        }
+
+        private void EnterPortal()
+        {
+            Debug.Log($"[PortalController] Player entered portal {portalID}. Transitioning to scene: {targetSceneName}");
+            
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.LoadScene(targetSceneName);
+            }
+            else
+            {
+                Debug.LogWarning("[PortalController] GameManager instance not found, unable to transition scene.");
             }
         }
     }
