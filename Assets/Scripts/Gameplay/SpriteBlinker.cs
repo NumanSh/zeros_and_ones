@@ -22,6 +22,12 @@ namespace ZerosAndOnes.Gameplay
         [SerializeField] private float soundVolume = 1f;
         [Tooltip("If enabled, the image stays visible exactly as long as the sound plays, then hides for 'Interval' seconds.")]
         [SerializeField] private bool syncVisibleTimeToSound = true;
+        [Tooltip("Whether the sound is 3D (spatialized).")]
+        [SerializeField] private bool use3DSound = true;
+        [Tooltip("Distance within which the sound is at maximum volume.")]
+        [SerializeField] private float minDistance = 2f;
+        [Tooltip("Distance at which the sound is completely silent.")]
+        [SerializeField] private float maxDistance = 15f;
 
         private SpriteRenderer _spriteRenderer;
         private Image _uiImage;
@@ -40,6 +46,18 @@ namespace ZerosAndOnes.Gameplay
                 _audioSource = gameObject.AddComponent<AudioSource>();
             }
             _audioSource.playOnAwake = false;
+
+            if (use3DSound)
+            {
+                _audioSource.spatialBlend = 1f;
+                _audioSource.rolloffMode = AudioRolloffMode.Linear;
+                _audioSource.minDistance = minDistance;
+                _audioSource.maxDistance = maxDistance;
+            }
+            else
+            {
+                _audioSource.spatialBlend = 0f;
+            }
 
             if (_spriteRenderer == null && _uiImage == null)
             {
