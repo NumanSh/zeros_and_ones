@@ -10,7 +10,6 @@ namespace ZerosAndOnes.Gameplay
         [Header("Movement Settings")]
         [SerializeField] private float moveSpeed = 8f;
         [SerializeField] private float jumpForce = 11f;
-        [SerializeField] private float climbSpeed = 5f;
 
         [Header("Ground Detection")]
         [SerializeField] private Transform groundCheckPoint;
@@ -31,16 +30,11 @@ namespace ZerosAndOnes.Gameplay
         private bool _isCrouching;
 
         private float _horizontalInput;
-        private float _verticalInput;
         private bool _isGrounded;
-        private bool _isNearLadder;
-        private bool _isClimbing;
-        private float _originalGravityScale;
 
         // Animation Parameter Hashes
         private static readonly int IsRunningHash = Animator.StringToHash("isRunning");
         private static readonly int IsGroundedHash = Animator.StringToHash("isGrounded");
-        private static readonly int IsClimbingHash = Animator.StringToHash("isClimbing");
         private static readonly int VerticalVelocityHash = Animator.StringToHash("verticalVelocity");
 
         private void Awake()
@@ -65,15 +59,12 @@ namespace ZerosAndOnes.Gameplay
             {
                 _originalVisualScale = spriteRenderer.transform.localScale;
             }
-
-            _originalGravityScale = _rb.gravityScale;
         }
 
         private void Update()
         {
             // Gather inputs using New Input System
             float horizontal = 0f;
-            float vertical = 0f;
             bool jumpPressed = false;
             bool jumpReleased = false;
             bool crouchHeld = false;
@@ -85,12 +76,7 @@ namespace ZerosAndOnes.Gameplay
 
                 if (Keyboard.current.sKey.isPressed || Keyboard.current.downArrowKey.isPressed)
                 {
-                    vertical -= 1f;
                     crouchHeld = true;
-                }
-                if (Keyboard.current.wKey.isPressed || Keyboard.current.upArrowKey.isPressed)
-                {
-                    vertical += 1f;
                 }
 
                 // Jump on Space, W, or Up Arrow
@@ -109,7 +95,6 @@ namespace ZerosAndOnes.Gameplay
             }
 
             _horizontalInput = horizontal;
-            _verticalInput = vertical;
 
             // Handle sprite flipping
             if (_horizontalInput > 0.1f)
@@ -124,19 +109,8 @@ namespace ZerosAndOnes.Gameplay
             // Ground checking
             CheckGround();
 
-            // Ladder transition logic
-            if (_isNearLadder && Mathf.Abs(_verticalInput) > 0.1f)
-            {
-                _isClimbing = true;
-            }
-
-            if (!_isNearLadder)
-            {
-                _isClimbing = false;
-            }
-
             // Crouch handling
-            if (crouchHeld && _isGrounded && !_isClimbing)
+            if (crouchHeld && _isGrounded)
             {
                 if (!_isCrouching) Crouch(true);
             }
@@ -149,7 +123,7 @@ namespace ZerosAndOnes.Gameplay
             }
 
             // Jump handling
-            if (jumpPressed && _isGrounded && !_isClimbing && !_isCrouching)
+            if (jumpPressed && _isGrounded && !_isCrouching)
             {
                 Jump();
             }
@@ -166,21 +140,9 @@ namespace ZerosAndOnes.Gameplay
 
         private void FixedUpdate()
         {
-            if (_isClimbing)
-            {
-                // Disables gravity during climbing
-                _rb.gravityScale = 0f;
-                // Move vertically and horizontally (climbing movement)
-                _rb.velocity = new Vector2(_horizontalInput * moveSpeed * 0.75f, _verticalInput * climbSpeed);
-            }
-            else
-            {
-                // Re-enable gravity scale
-                _rb.gravityScale = _originalGravityScale;
-                // Standard horizontal running/crouch physics
-                float currentSpeed = _isCrouching ? moveSpeed * 0.5f : moveSpeed;
-                _rb.velocity = new Vector2(_horizontalInput * currentSpeed, _rb.velocity.y);
-            }
+            // Standard horizontal running/crouch physics
+            float currentSpeed = _isCrouching ? moveSpeed * 0.5f : moveSpeed;
+            _rb.velocity = new Vector2(_horizontalInput * currentSpeed, _rb.velocity.y);
         }
 
         private void CheckGround()
@@ -285,25 +247,7 @@ namespace ZerosAndOnes.Gameplay
 
             _animator.SetBool(IsRunningHash, Mathf.Abs(_rb.velocity.x) > 0.1f);
             _animator.SetBool(IsGroundedHash, _isGrounded);
-            _animator.SetBool(IsClimbingHash, _isClimbing);
             _animator.SetFloat(VerticalVelocityHash, _rb.velocity.y);
-        }
-
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            if (other.CompareTag("Ladder"))
-            {
-                _isNearLadder = true;
-            }
-        }
-
-        private void OnTriggerExit2D(Collider2D other)
-        {
-            if (other.CompareTag("Ladder"))
-            {
-                _isNearLadder = false;
-                _isClimbing = false;
-            }
         }
 
         // Draw ground check helper in Editor

@@ -294,6 +294,45 @@ namespace ZerosAndOnes.EditorScripts
                 Debug.LogWarning("[SetupHeroAnimations] Main Camera not found in scene. Could not link CameraController2D.");
             }
 
+            // Audio Setup for "thunders"
+            GameObject thunderObj = GameObject.Find("thunders");
+            if (thunderObj != null)
+            {
+                AudioClip thunderClip = AssetDatabase.LoadAssetAtPath<AudioClip>("Assets/sounds/freesound_community-electric-90746.mp3");
+                if (thunderClip != null)
+                {
+                    Undo.RecordObject(thunderObj, "Configure Thunder Audio");
+                    AudioSource audioSource = thunderObj.GetComponent<AudioSource>();
+                    if (audioSource == null)
+                    {
+                        audioSource = thunderObj.AddComponent<AudioSource>();
+                    }
+
+                    audioSource.clip = thunderClip;
+                    audioSource.spatialBlend = 1f; // Make it 3D (Spatialized)
+                    audioSource.loop = true;
+                    audioSource.playOnAwake = true;
+                    audioSource.volume = 0.1f;     // Set a much lower overall volume
+                    audioSource.minDistance = 0.5f; // Starts falling off very close
+                    audioSource.maxDistance = 2.5f; // Fades out completely within a short range
+                    audioSource.rolloffMode = AudioRolloffMode.Linear;
+
+                    EditorUtility.SetDirty(thunderObj);
+                    Debug.Log("[SetupHeroAnimations] Configured 3D Spatial AudioSource on 'thunders' GameObject.");
+                }
+                else
+                {
+                    Debug.LogWarning("[SetupHeroAnimations] Thunder audio clip not found at: Assets/sounds/freesound_community-electric-90746.mp3");
+                }
+            }
+            else
+            {
+                Debug.LogWarning("[SetupHeroAnimations] GameObject 'thunders' not found in scene. Could not configure audio.");
+            }
+
+            // 8. Automatically add all scenes in the project to the Build Settings
+            AddAllScenesToBuildSettings();
+
             // Save and Mark Scene as Dirty
             EditorUtility.SetDirty(playerObj);
             EditorSceneManager.MarkSceneDirty(activeScene);
@@ -357,6 +396,43 @@ namespace ZerosAndOnes.EditorScripts
             AnimationUtility.SetObjectReferenceCurve(clip, binding, keyframes);
             AssetDatabase.CreateAsset(clip, path);
             return clip;
+        }
+
+        private static void AddAllScenesToBuildSettings()
+        {
+            // Find all scene files in the Assets folder
+            string[] sceneGuids = AssetDatabase.FindAssets("t:Scene", new[] { "Assets" });
+            List<EditorBuildSettingsScene> buildScenes = new List<EditorBuildSettingsScene>(EditorBuildSettings.scenes);
+
+            bool changed = false;
+            foreach (string guid in sceneGuids)
+            {
+                string path = AssetDatabase.GUIDToAssetPath(guid);
+                if (string.IsNullOrEmpty(path)) continue;
+
+                // Check if this scene is already in build settings
+                bool alreadyInBuild = false;
+                foreach (var s in buildScenes)
+                {
+                    if (s.path == path)
+                    {
+                        alreadyInBuild = true;
+                        break;
+                    }
+                }
+
+                if (!alreadyInBuild)
+                {
+                    buildScenes.Add(new EditorBuildSettingsScene(path, true));
+                    Debug.Log($"[SetupHeroAnimations] Added scene to Build Settings: {path}");
+                    changed = true;
+                }
+            }
+
+            if (changed)
+            {
+                EditorBuildSettings.scenes = buildScenes.ToArray();
+            }
         }
     }
 }
