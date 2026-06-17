@@ -61,7 +61,9 @@ public class Test_WorkSpace : MonoBehaviour
     
     [SerializeField] public GameObject challenge;
 
-    [SerializeField] public GameObject challengeUI;
+    [SerializeField] public GameObject challengeUI_win;
+    [SerializeField] public GameObject challengeUI_fail;
+    [SerializeField] public GameObject challengeUI_pass_gate;
 
     private bool isSolves =false;
     private bool isSolves16 =false;

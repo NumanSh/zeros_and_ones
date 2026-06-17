@@ -331,6 +331,8 @@ MonoBehaviour:
     truthTable: []
   cable16TruthTables: []
   cableManagaer16TruthTables: []
+  challenge: {fileID: 0}
+  challengeUI: {fileID: 0}
 --- !u!1001 &1026455190
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -734,7 +736,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 212647863547550352, guid: 01660f1f223181949a7181befd60d504, type: 3}
       propertyPath: timeRemaining
-      value: 60
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1637420231594207802, guid: 01660f1f223181949a7181befd60d504, type: 3}
       propertyPath: m_Pivot.x
