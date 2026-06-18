@@ -5,11 +5,17 @@ public class Timer : MonoBehaviour
 {
     [SerializeField] public TextMeshProUGUI timerText; 
     [SerializeField] private float timeRemaining = 60f; 
-    private bool isTimerRunning = true;
+    private bool isComplete = true;
+
+
+    public bool GetIsComplete()
+    {
+        return isComplete;
+    }
 
     void Update()
     {
-        if (isTimerRunning)
+        if (isComplete)
         {
             if (timeRemaining > 0)
             {
@@ -19,7 +25,7 @@ public class Timer : MonoBehaviour
             else
             {
                 timeRemaining = 0;
-                isTimerRunning = false;
+                isComplete = false;
                
             }
         }
@@ -44,7 +50,7 @@ public class Timer : MonoBehaviour
 
     public bool PassChallenge()
     {
-        if (isTimerRunning)
+        if (isComplete)
         {
             Debug.Log("Challenge Passed!");
             return true;

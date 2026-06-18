@@ -1,0 +1,106 @@
+using UnityEngine;
+using System.Collections.Generic;
+
+public class ComponentBarManager : MonoBehaviour
+{
+    public static Dictionary<LogicGates_Type, bool> SolvedComponents = new Dictionary<LogicGates_Type, bool>();
+
+    [System.Serializable]
+    public struct ComponentUI
+    {
+        public LogicGates_Type componentType; 
+        public GameObject uiElement;         
+    }
+
+    [Header("logic gates list")]
+    public List<ComponentUI> allComponentsUI;
+
+    [Header("buttons")]
+    public GameObject nextButton;
+    public GameObject prevButton; 
+
+    private List<GameObject> activeSolvedElements = new List<GameObject>(); 
+    private int currentPage = 0; 
+    private const int ITEMS_PER_PAGE = 3; 
+
+    void Start()
+    {
+        if (SolvedComponents.Count == 0)
+        {
+            InitializeComponents();
+        }
+
+        
+        UpdateBarPages();
+    }
+
+    void InitializeComponents()
+    {
+        foreach (LogicGates_Type gate in System.Enum.GetValues(typeof(LogicGates_Type)))
+        {
+            SolvedComponents.Add(gate, false);
+        }
+    }
+
+    
+    public void UpdateBarPages()
+    {
+        activeSolvedElements.Clear();
+
+       
+        foreach (var comp in allComponentsUI)
+        {
+            comp.uiElement.SetActive(false); 
+
+            if (SolvedComponents.ContainsKey(comp.componentType) && SolvedComponents[comp.componentType])
+            {
+                activeSolvedElements.Add(comp.uiElement);
+            }
+        }
+
+       
+        int startIndex = currentPage * ITEMS_PER_PAGE;
+        int endIndex = startIndex + ITEMS_PER_PAGE;
+
+        
+        for (int i = startIndex; i < endIndex; i++)
+        {
+            if (i < activeSolvedElements.Count)
+            {
+                activeSolvedElements[i].SetActive(true);
+            }
+        }
+
+        
+        if (prevButton != null) prevButton.SetActive(currentPage > 0);
+        if (nextButton != null) nextButton.SetActive(endIndex < activeSolvedElements.Count);
+    }
+
+   
+    public void NextPage()
+    {
+        if ((currentPage + 1) * ITEMS_PER_PAGE < activeSolvedElements.Count)
+        {
+            currentPage++;
+            UpdateBarPages();
+        }
+    }
+
+    
+    public void PreviousPage()
+    {
+        if (currentPage > 0)
+        {
+            currentPage--;
+            UpdateBarPages();
+        }
+    }
+
+    public static void MarkComponentAsSolved(LogicGates_Type gateType)
+    {
+        if (SolvedComponents.ContainsKey(gateType))
+        {
+            SolvedComponents[gateType] = true;
+        }
+    }
+}
