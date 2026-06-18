@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class ComponentBarManager : MonoBehaviour
@@ -16,38 +17,43 @@ public class ComponentBarManager : MonoBehaviour
     public List<ComponentUI> allComponentsUI;
 
     [Header("buttons")]
-    public GameObject nextButton;
-    public GameObject prevButton; 
+    public Button nextButton;
+    public Button prevButton; 
 
-    private List<GameObject> activeSolvedElements = new List<GameObject>(); 
+    public List<GameObject> activeSolvedElements = new List<GameObject>(); 
     private int currentPage = 0; 
     private const int ITEMS_PER_PAGE = 3; 
 
     void Start()
     {
-        if (SolvedComponents.Count == 0)
-        {
-            InitializeComponents();
-        }
 
+        InitializeComponents();
+
+        SolvedComponents[LogicGates_Type.And] = true;
+        SolvedComponents[LogicGates_Type.Not] = true;
+        SolvedComponents[LogicGates_Type.Xor] = true;
+        SolvedComponents[LogicGates_Type.FullAdder] = true;
+
+        if (nextButton != null) nextButton.onClick.AddListener(NextPage);
+        if (prevButton != null) prevButton.onClick.AddListener(PreviousPage);
         
         UpdateBarPages();
     }
 
     void InitializeComponents()
     {
-        foreach (LogicGates_Type gate in System.Enum.GetValues(typeof(LogicGates_Type)))
+        if (SolvedComponents.Count == 0)
         {
-            SolvedComponents.Add(gate, false);
+            foreach (LogicGates_Type gate in System.Enum.GetValues(typeof(LogicGates_Type)))
+            {
+                SolvedComponents.Add(gate, false);
+            }
         }
     }
 
-    
     public void UpdateBarPages()
     {
         activeSolvedElements.Clear();
-
-       
         foreach (var comp in allComponentsUI)
         {
             comp.uiElement.SetActive(false); 
@@ -58,11 +64,9 @@ public class ComponentBarManager : MonoBehaviour
             }
         }
 
-       
         int startIndex = currentPage * ITEMS_PER_PAGE;
         int endIndex = startIndex + ITEMS_PER_PAGE;
 
-        
         for (int i = startIndex; i < endIndex; i++)
         {
             if (i < activeSolvedElements.Count)
@@ -71,12 +75,10 @@ public class ComponentBarManager : MonoBehaviour
             }
         }
 
-        
-        if (prevButton != null) prevButton.SetActive(currentPage > 0);
-        if (nextButton != null) nextButton.SetActive(endIndex < activeSolvedElements.Count);
+        if (prevButton != null) prevButton.gameObject.SetActive(currentPage > 0);
+        if (nextButton != null) nextButton.gameObject.SetActive(endIndex < activeSolvedElements.Count);
     }
 
-   
     public void NextPage()
     {
         if ((currentPage + 1) * ITEMS_PER_PAGE < activeSolvedElements.Count)
@@ -86,7 +88,6 @@ public class ComponentBarManager : MonoBehaviour
         }
     }
 
-    
     public void PreviousPage()
     {
         if (currentPage > 0)
