@@ -63,7 +63,7 @@ EditorBuildSettings:
     path: Assets/Assits_imported/skies/Sky Backgrounds Pixel Art 1/Scenes/Grounded/Background_8.unity
     guid: c4803f450cfa2444b8879a0b6c8241c6
   - enabled: 1
-    path: Assets/Scenes/Logic_gates/Add16.unity
+    path: Assets/Scenes/Logic_gates/Add16_Scene.unity
     guid: 5fd45d5121ad90441ae82557ae7d37d6
   - enabled: 1
     path: Assets/Scenes/Logic_gates/And16.unity
