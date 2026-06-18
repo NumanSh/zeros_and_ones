@@ -35,6 +35,8 @@ namespace ZerosAndOnes.Gameplay
         private float _timer;
         private bool _visible;
 
+        public bool IsVisible => _visible;
+
         private void Awake()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();

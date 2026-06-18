@@ -73,25 +73,25 @@ namespace ZerosAndOnes.Gameplay
             switch (type)
             {
                 case LogicGates_Type.Xor: 
-                    return "Xor_scene";
+                    return "Xor_Scene";
                 case LogicGates_Type.And: 
-                    return "and_scene";
+                    return "And_Scene";
                 case LogicGates_Type.Or: 
-                    return "Or_scenes";
+                    return "Or_Scene";
                 case LogicGates_Type.And16:
-                    return "And16";
+                    return "And16_Scene";
                 case LogicGates_Type.Not16:
-                    return "Not16";
+                    return "Not16_Scene";
                 case LogicGates_Type.Or16:
-                    return "Or16";
+                    return "Or16_Scene";
                 case LogicGates_Type.HalfAdder:
-                    return "HalfAdder";
+                    return "HalfAdder_Scene";
                 case LogicGates_Type.FullAdder:
-                    return "FullAdder";
+                    return "FullAdder_Scene";
                 case LogicGates_Type.Add16:
-                    return "Add16";
+                    return "Add16_Scene";
                 case LogicGates_Type.Inc16:
-                    return "Inc16";
+                    return "Inc16_Scene";
                 default: 
                     return type.ToString(); // Fallback
             }

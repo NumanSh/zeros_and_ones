@@ -1,0 +1,9 @@
+Fonts used in this design:
+
+Font: Nunito
+Author: Vernon Adams
+Url: http://www.fontsquirrel.com/fonts/nunito
+
+Font: Berkshire Swash
+Author: Astigmatic
+Url: https://www.fontsquirrel.com/fonts/berkshire-swash

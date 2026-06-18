@@ -240,7 +240,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 30
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -545,6 +545,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7740550089288002917, guid: 01660f1f223181949a7181befd60d504, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -808
+      objectReference: {fileID: 0}
+    - target: {fileID: 7740550089288002917, guid: 01660f1f223181949a7181befd60d504, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 399
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -726,6 +734,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Or_WorkSpace
       objectReference: {fileID: 0}
+    - target: {fileID: 2595497019774065554, guid: dbb92a3077839b347b70e4ffe12c6ac8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2958310180343489758, guid: dbb92a3077839b347b70e4ffe12c6ac8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -808,7 +820,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3891782762617412302, guid: dbb92a3077839b347b70e4ffe12c6ac8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.9599857
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3891782762617412302, guid: dbb92a3077839b347b70e4ffe12c6ac8, type: 3}
       propertyPath: m_LocalRotation.w
