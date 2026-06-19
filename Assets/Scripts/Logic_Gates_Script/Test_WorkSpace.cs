@@ -600,6 +600,7 @@ public class Test_WorkSpace : MonoBehaviour
                         if (!CheckTruthTable(actualTruthTable, OR_Gate.TestOut()[0].truthTable))
                         {
                             isSolves=false;
+                            challengeUI_fail.SetActive(true);
                             break;
                         }
                         count++;
@@ -643,6 +644,15 @@ public class Test_WorkSpace : MonoBehaviour
             isAllCorrect16=true;
             if (cableManagaerTruthTables.Count == 0)
             {
+                if (challenge.GetComponent<Timer>().GetIsComplete())
+                {
+                    challengeUI_win.SetActive(true);
+                    
+                }
+                else
+                {
+                    challengeUI_pass_gate.SetActive(true);
+                }
                 Debug.Log("All tests passed for 16-bit gate!");
                 // door.OpenDoor();
             }
@@ -653,6 +663,15 @@ public class Test_WorkSpace : MonoBehaviour
             if (cableManagaer16TruthTables.Count == 0 )
             {
                 Debug.Log("All tests passed for 1-bit gate!");
+                if (challenge.GetComponent<Timer>().GetIsComplete())
+                {
+                    challengeUI_win.SetActive(true);
+                    
+                }
+                else
+                {
+                    challengeUI_pass_gate.SetActive(true);
+                }
             //    door.OpenDoor(); 
             }
         }
