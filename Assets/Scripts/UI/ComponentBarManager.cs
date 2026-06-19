@@ -31,7 +31,7 @@ public class ComponentBarManager : MonoBehaviour
 
         SolvedComponents[LogicGates_Type.And] = true;
         SolvedComponents[LogicGates_Type.Not] = true;
-        SolvedComponents[LogicGates_Type.Xor] = true;
+        SolvedComponents[LogicGates_Type.Or] = true;
         SolvedComponents[LogicGates_Type.FullAdder] = true;
 
         if (nextButton != null) nextButton.onClick.AddListener(NextPage);

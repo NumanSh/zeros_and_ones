@@ -7,6 +7,8 @@ public class UIDragAndDrop : MonoBehaviour, IDragHandler, IEndDragHandler, IBegi
     public GameObject gatePrefab; 
 
     private Vector3 startPosition;
+
+    public Vector3 offsit;
     private bool isOverGreenArea = false;
     private Vector3 mouseWorldPos;
 
@@ -45,7 +47,7 @@ public class UIDragAndDrop : MonoBehaviour, IDragHandler, IEndDragHandler, IBegi
         if (isOverGreenArea && gatePrefab != null)
         {
             
-            Instantiate(gatePrefab, mouseWorldPos, Quaternion.identity);
+            Instantiate(gatePrefab, mouseWorldPos+offsit, Quaternion.identity);
         }
 
         transform.position = startPosition;
