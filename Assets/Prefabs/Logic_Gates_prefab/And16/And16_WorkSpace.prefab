@@ -62,6 +62,10 @@ MonoBehaviour:
   - cableManager: {fileID: 0}
     cableManagers: {fileID: 4324508581456742991}
     truthTable: []
+  challenge: {fileID: 0}
+  challengeUI_win: {fileID: 0}
+  challengeUI_fail: {fileID: 0}
+  challengeUI_pass_gate: {fileID: 0}
 --- !u!1 &7669642860256800042
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,7 +276,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4120092731376518829, guid: 88fe9be7b59cc26498e74ec851bf8ce3, type: 3}
+    - {fileID: 3712988889925781960, guid: 88fe9be7b59cc26498e74ec851bf8ce3, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88fe9be7b59cc26498e74ec851bf8ce3, type: 3}

@@ -1,84 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &169674284068223776
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1785868193405904436}
-  - component: {fileID: 2864467146191581394}
-  - component: {fileID: 215877457823757322}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1785868193405904436
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 169674284068223776}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -740, y: -347, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7959221032144183287}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2864467146191581394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 169674284068223776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!114 &215877457823757322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 169674284068223776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_MoveRepeatDelay: 0.5
-  m_MoveRepeatRate: 0.1
-  m_XRTrackingOrigin: {fileID: 0}
-  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_LeftClickAction: {fileID: 3001919216989983466, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_MiddleClickAction: {fileID: -2185481485913320682, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_RightClickAction: {fileID: -4090225696740746782, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_DeselectOnBackgroundClick: 1
-  m_PointerBehavior: 0
-  m_CursorLockBehavior: 0
-  m_ScrollDeltaPerTick: 6
 --- !u!1 &782985098675692415
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,7 +11,7 @@ GameObject:
   - component: {fileID: 2258576702847963147}
   - component: {fileID: 1172376231257317972}
   - component: {fileID: 6354505900344969204}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +92,7 @@ GameObject:
   - component: {fileID: 8000438196814846178}
   - component: {fileID: 8361352967096844432}
   - component: {fileID: 8071601087352850950}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,6 +218,10 @@ MonoBehaviour:
   bitSelectionPanel: {fileID: 8654797834189903155}
   positionToSpawnCable: {fileID: 8953717749547294825}
   truthTable: 
+  truthTable16: []
+  type: 0
+  canvas16bit: {fileID: 0}
+  end_point: {fileID: 0}
 --- !u!1 &1205595290475751803
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,7 +233,7 @@ GameObject:
   - component: {fileID: 2078847281691132839}
   - component: {fileID: 7933691994441901404}
   - component: {fileID: 5655526297516811495}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -386,7 +311,7 @@ GameObject:
   m_Component:
   - component: {fileID: 85960470946864451}
   - component: {fileID: 2950968914520392919}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -462,7 +387,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1034046433702765834}
   - component: {fileID: 204136957646958949}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: start_point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -549,7 +474,7 @@ GameObject:
   - component: {fileID: 6853432107803090943}
   - component: {fileID: 2900732760548327353}
   - component: {fileID: 662799744163412453}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -675,6 +600,10 @@ MonoBehaviour:
   bitSelectionPanel: {fileID: 8654797834189903155}
   positionToSpawnCable: {fileID: 8953717749547294825}
   truthTable: 
+  truthTable16: []
+  type: 0
+  canvas16bit: {fileID: 0}
+  end_point: {fileID: 0}
 --- !u!1 &2444896022760095189
 GameObject:
   m_ObjectHideFlags: 0
@@ -688,7 +617,7 @@ GameObject:
   - component: {fileID: 2373964838670314390}
   - component: {fileID: 8076248101414090279}
   - component: {fileID: 8274506200782539995}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -814,6 +743,10 @@ MonoBehaviour:
   bitSelectionPanel: {fileID: 8654797834189903155}
   positionToSpawnCable: {fileID: 8953717749547294825}
   truthTable: 
+  truthTable16: []
+  type: 0
+  canvas16bit: {fileID: 0}
+  end_point: {fileID: 0}
 --- !u!1 &2534724580488389959
 GameObject:
   m_ObjectHideFlags: 0
@@ -825,7 +758,7 @@ GameObject:
   - component: {fileID: 2921250580293811891}
   - component: {fileID: 2883224965805576590}
   - component: {fileID: 7853815487254140377}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -904,7 +837,7 @@ GameObject:
   - component: {fileID: 2426096432340246544}
   - component: {fileID: 5924912112618595764}
   - component: {fileID: 4510330137674888639}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -983,7 +916,7 @@ GameObject:
   - component: {fileID: 1620307154601309374}
   - component: {fileID: 7416832319360343406}
   - component: {fileID: 4572220958753973480}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1062,7 +995,7 @@ GameObject:
   - component: {fileID: 2041641553632201591}
   - component: {fileID: 7994376977182100250}
   - component: {fileID: 257443715252685703}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1143,7 +1076,7 @@ GameObject:
   - component: {fileID: 4661551526133083815}
   - component: {fileID: 7617184577385262774}
   - component: {fileID: 3610334185895811490}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1269,6 +1202,10 @@ MonoBehaviour:
   bitSelectionPanel: {fileID: 8654797834189903155}
   positionToSpawnCable: {fileID: 8953717749547294825}
   truthTable: 
+  truthTable16: []
+  type: 0
+  canvas16bit: {fileID: 0}
+  end_point: {fileID: 0}
 --- !u!1 &3806209817877693067
 GameObject:
   m_ObjectHideFlags: 0
@@ -1282,7 +1219,7 @@ GameObject:
   - component: {fileID: 5893127390259648461}
   - component: {fileID: 4539114923013415785}
   - component: {fileID: 3602649174657230043}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1408,6 +1345,10 @@ MonoBehaviour:
   bitSelectionPanel: {fileID: 8654797834189903155}
   positionToSpawnCable: {fileID: 8953717749547294825}
   truthTable: 
+  truthTable16: []
+  type: 0
+  canvas16bit: {fileID: 0}
+  end_point: {fileID: 0}
 --- !u!1 &3971094256179806151
 GameObject:
   m_ObjectHideFlags: 0
@@ -1419,7 +1360,7 @@ GameObject:
   - component: {fileID: 550054592744797111}
   - component: {fileID: 694447410789168137}
   - component: {fileID: 3823045991509885071}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1500,7 +1441,7 @@ GameObject:
   - component: {fileID: 3330569234981156438}
   - component: {fileID: 1666026064267341228}
   - component: {fileID: 691353977523191396}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1626,6 +1567,10 @@ MonoBehaviour:
   bitSelectionPanel: {fileID: 8654797834189903155}
   positionToSpawnCable: {fileID: 8953717749547294825}
   truthTable: 
+  truthTable16: []
+  type: 0
+  canvas16bit: {fileID: 0}
+  end_point: {fileID: 0}
 --- !u!1 &4085342914836296960
 GameObject:
   m_ObjectHideFlags: 0
@@ -1637,7 +1582,7 @@ GameObject:
   - component: {fileID: 8974950132697365081}
   - component: {fileID: 14158411889670643}
   - component: {fileID: 3472892339308331715}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1718,7 +1663,7 @@ GameObject:
   - component: {fileID: 3573778209900352767}
   - component: {fileID: 3839338092662543694}
   - component: {fileID: 2650924127556981432}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1844,6 +1789,10 @@ MonoBehaviour:
   bitSelectionPanel: {fileID: 8654797834189903155}
   positionToSpawnCable: {fileID: 8953717749547294825}
   truthTable: 
+  truthTable16: []
+  type: 0
+  canvas16bit: {fileID: 0}
+  end_point: {fileID: 0}
 --- !u!1 &4296817564250720084
 GameObject:
   m_ObjectHideFlags: 0
@@ -1857,7 +1806,7 @@ GameObject:
   - component: {fileID: 1017711574057956252}
   - component: {fileID: 914851277207049422}
   - component: {fileID: 5425682385800672324}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1983,6 +1932,10 @@ MonoBehaviour:
   bitSelectionPanel: {fileID: 8654797834189903155}
   positionToSpawnCable: {fileID: 8953717749547294825}
   truthTable: 
+  truthTable16: []
+  type: 0
+  canvas16bit: {fileID: 0}
+  end_point: {fileID: 0}
 --- !u!1 &4833922621613088817
 GameObject:
   m_ObjectHideFlags: 0
@@ -1994,7 +1947,7 @@ GameObject:
   - component: {fileID: 873393440446354379}
   - component: {fileID: 708421411046789158}
   - component: {fileID: 7424626331670261038}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2075,7 +2028,7 @@ GameObject:
   - component: {fileID: 2299166908502940592}
   - component: {fileID: 3267758877558431832}
   - component: {fileID: 1804501406739694578}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2201,6 +2154,10 @@ MonoBehaviour:
   bitSelectionPanel: {fileID: 8654797834189903155}
   positionToSpawnCable: {fileID: 8953717749547294825}
   truthTable: 
+  truthTable16: []
+  type: 0
+  canvas16bit: {fileID: 0}
+  end_point: {fileID: 0}
 --- !u!1 &5476236281654415763
 GameObject:
   m_ObjectHideFlags: 0
@@ -2212,7 +2169,7 @@ GameObject:
   - component: {fileID: 1717908751858126834}
   - component: {fileID: 6861706405369986403}
   - component: {fileID: 4866117769576369545}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2293,7 +2250,7 @@ GameObject:
   - component: {fileID: 7471687572758794301}
   - component: {fileID: 4470026336753087853}
   - component: {fileID: 4881259480061782800}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2419,6 +2376,10 @@ MonoBehaviour:
   bitSelectionPanel: {fileID: 8654797834189903155}
   positionToSpawnCable: {fileID: 8953717749547294825}
   truthTable: 
+  truthTable16: []
+  type: 0
+  canvas16bit: {fileID: 0}
+  end_point: {fileID: 0}
 --- !u!1 &6015232000420366777
 GameObject:
   m_ObjectHideFlags: 0
@@ -2430,7 +2391,7 @@ GameObject:
   - component: {fileID: 4732011625489877115}
   - component: {fileID: 756881705255807118}
   - component: {fileID: 49178052878312275}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2511,7 +2472,7 @@ GameObject:
   - component: {fileID: 7225766228011498477}
   - component: {fileID: 2492646451573087124}
   - component: {fileID: 7250222854002595048}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: All16bit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2650,7 +2611,7 @@ GameObject:
   - component: {fileID: 6576372420457841971}
   - component: {fileID: 652879529202022465}
   - component: {fileID: 5155507730775238248}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2776,6 +2737,10 @@ MonoBehaviour:
   bitSelectionPanel: {fileID: 8654797834189903155}
   positionToSpawnCable: {fileID: 8953717749547294825}
   truthTable: 
+  truthTable16: []
+  type: 0
+  canvas16bit: {fileID: 0}
+  end_point: {fileID: 0}
 --- !u!1 &7018060524767587617
 GameObject:
   m_ObjectHideFlags: 0
@@ -2789,7 +2754,7 @@ GameObject:
   - component: {fileID: 7296707057592565770}
   - component: {fileID: 8280094914671922055}
   - component: {fileID: 203849740999564354}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2915,6 +2880,10 @@ MonoBehaviour:
   bitSelectionPanel: {fileID: 8654797834189903155}
   positionToSpawnCable: {fileID: 8953717749547294825}
   truthTable: 
+  truthTable16: []
+  type: 0
+  canvas16bit: {fileID: 0}
+  end_point: {fileID: 0}
 --- !u!1 &7151080468429743289
 GameObject:
   m_ObjectHideFlags: 0
@@ -2928,7 +2897,7 @@ GameObject:
   - component: {fileID: 3527583373866004491}
   - component: {fileID: 6239798324111679229}
   - component: {fileID: 96121093754920617}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3054,6 +3023,10 @@ MonoBehaviour:
   bitSelectionPanel: {fileID: 8654797834189903155}
   positionToSpawnCable: {fileID: 8953717749547294825}
   truthTable: 
+  truthTable16: []
+  type: 0
+  canvas16bit: {fileID: 0}
+  end_point: {fileID: 0}
 --- !u!1 &7430350890291935583
 GameObject:
   m_ObjectHideFlags: 0
@@ -3065,7 +3038,7 @@ GameObject:
   - component: {fileID: 1305089019224783918}
   - component: {fileID: 6337801378641260070}
   - component: {fileID: 2365128185491013941}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3144,7 +3117,7 @@ GameObject:
   - component: {fileID: 5320674999264665912}
   - component: {fileID: 7571319826309160031}
   - component: {fileID: 541555598202092827}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3223,7 +3196,7 @@ GameObject:
   - component: {fileID: 1562818499805665576}
   - component: {fileID: 2644591198372109932}
   - component: {fileID: 9206867533510791668}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3304,7 +3277,7 @@ GameObject:
   - component: {fileID: 4009801528787583518}
   - component: {fileID: 8180960946409611948}
   - component: {fileID: 5062090292461711785}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3430,6 +3403,10 @@ MonoBehaviour:
   bitSelectionPanel: {fileID: 8654797834189903155}
   positionToSpawnCable: {fileID: 8953717749547294825}
   truthTable: 
+  truthTable16: []
+  type: 0
+  canvas16bit: {fileID: 0}
+  end_point: {fileID: 0}
 --- !u!1 &8209933398891044473
 GameObject:
   m_ObjectHideFlags: 0
@@ -3441,7 +3418,7 @@ GameObject:
   - component: {fileID: 5411592507236222170}
   - component: {fileID: 3156541798143749852}
   - component: {fileID: 1165929467752562087}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3522,7 +3499,7 @@ GameObject:
   - component: {fileID: 784217868337960616}
   - component: {fileID: 648401982479051350}
   - component: {fileID: 8639447671208286880}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3648,6 +3625,10 @@ MonoBehaviour:
   bitSelectionPanel: {fileID: 8654797834189903155}
   positionToSpawnCable: {fileID: 8953717749547294825}
   truthTable: 
+  truthTable16: []
+  type: 0
+  canvas16bit: {fileID: 0}
+  end_point: {fileID: 0}
 --- !u!1 &8422598710563457242
 GameObject:
   m_ObjectHideFlags: 0
@@ -3659,7 +3640,7 @@ GameObject:
   - component: {fileID: 5542436435988748021}
   - component: {fileID: 2405739790043374073}
   - component: {fileID: 6807674324579614654}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3739,7 +3720,7 @@ GameObject:
   - component: {fileID: 9036347023396868911}
   - component: {fileID: 8407191287284843691}
   - component: {fileID: 8940838061137193886}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Canvas16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3758,7 +3739,6 @@ RectTransform:
   m_LocalScale: {x: 0.0075, y: 0.0075000003, z: 0.005}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1785868193405904436}
   - {fileID: 5299642826635221261}
   - {fileID: 85960470946864451}
   m_Father: {fileID: 6644898317407519444}
@@ -3841,7 +3821,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6644898317407519444}
   - component: {fileID: 4897672639760467231}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: in_a_16bitUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3983,7 +3963,7 @@ GameObject:
   - component: {fileID: 3516671464671189196}
   - component: {fileID: 3651254236610598673}
   - component: {fileID: 5769306293086711735}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4109,6 +4089,10 @@ MonoBehaviour:
   bitSelectionPanel: {fileID: 8654797834189903155}
   positionToSpawnCable: {fileID: 8953717749547294825}
   truthTable: 
+  truthTable16: []
+  type: 0
+  canvas16bit: {fileID: 0}
+  end_point: {fileID: 0}
 --- !u!1 &8953717749547294825
 GameObject:
   m_ObjectHideFlags: 0
@@ -4121,7 +4105,7 @@ GameObject:
   - component: {fileID: 9106439826805638731}
   - component: {fileID: 5051010324342577615}
   - component: {fileID: 1245615572922943167}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: end_point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4257,6 +4241,7 @@ MonoBehaviour:
   panelOffset: {x: 0, y: 0, z: 0}
   truthTable: []
   All16bits: {fileID: 2492646451573087124}
+  AddButton: {fileID: 0}
   prefabToSpawnCable: {fileID: 4649450942387361392, guid: 143d09fa2f4cb7a4dae6fa3f1ae04ed8, type: 3}
   bitButtons:
   - {fileID: 5740564753829245129}
@@ -4286,7 +4271,7 @@ GameObject:
   - component: {fileID: 1089335155310874377}
   - component: {fileID: 8353551297629416725}
   - component: {fileID: 1374101939358269698}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
