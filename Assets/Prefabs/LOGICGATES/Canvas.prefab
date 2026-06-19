@@ -3912,6 +3912,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 33ea26a63b7c9e44e886a6e1ede64587, type: 3}
+    - target: {fileID: 1667377606613902200, guid: 1bf2da09e66e58647a4d781351f01c4d, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3376558843222034036, guid: 1bf2da09e66e58647a4d781351f01c4d, type: 3}
       propertyPath: timeRemaining
       value: 100
