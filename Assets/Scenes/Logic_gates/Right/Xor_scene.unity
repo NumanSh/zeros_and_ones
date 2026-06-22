@@ -1475,6 +1475,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 872741697055405468, guid: 01660f1f223181949a7181befd60d504, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1637420231594207802, guid: 01660f1f223181949a7181befd60d504, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1562,6 +1566,10 @@ PrefabInstance:
     - target: {fileID: 2486795783486861718, guid: 01660f1f223181949a7181befd60d504, type: 3}
       propertyPath: m_Layer
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486795783486861718, guid: 01660f1f223181949a7181befd60d504, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4218749498536288613, guid: 01660f1f223181949a7181befd60d504, type: 3}
       propertyPath: m_AnchorMax.y
