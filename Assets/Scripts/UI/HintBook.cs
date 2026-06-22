@@ -20,6 +20,7 @@ public class HintBook : MonoBehaviour
 
     public Button OpenBookButton;
 
+    public GameObject object_to_hide;
 
    
     public void Start()
@@ -41,6 +42,7 @@ public class HintBook : MonoBehaviour
             Debug.Log("open");
             currentIndex = 0;        
             UpdatePage();
+            object_to_hide.SetActive(false);
         }
     }
 
@@ -48,6 +50,7 @@ public class HintBook : MonoBehaviour
     public void CloseBook()
     {
         bookPanel.SetActive(false);
+        object_to_hide.SetActive(true);
     }
 
   
