@@ -909,6 +909,10 @@ PrefabInstance:
       propertyPath: challengeUI_pass_gate
       value: 
       objectReference: {fileID: 1113638152}
+    - target: {fileID: 8592701199095452474, guid: 5ce50394eb738f440b74ce46ccb0c04c, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
