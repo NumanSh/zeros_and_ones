@@ -1339,6 +1339,14 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6257283360037805803, guid: d46b1fc965dd7c545a787c84d253f9c2, type: 3}
+      propertyPath: panelOffset.x
+      value: 3.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257283360037805803, guid: d46b1fc965dd7c545a787c84d253f9c2, type: 3}
+      propertyPath: panelOffset.y
+      value: 1.9
+      objectReference: {fileID: 0}
     - target: {fileID: 6602922091052330885, guid: d46b1fc965dd7c545a787c84d253f9c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.38
