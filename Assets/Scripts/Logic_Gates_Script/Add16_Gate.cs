@@ -16,20 +16,20 @@ public class Add16_Gate : MonoBehaviour
     {
         ID_Gate = id;
     }
-    [SerializeField] private CableManager16bit inputA; 
-    [SerializeField] private CableManager16bit inputB; 
-    public ButtonController Out;
+    [SerializeField] private ButtonController_CableManager inputA; 
+    [SerializeField] private ButtonController_CableManager inputB; 
+    public ButtonController16bit Out;
     private bool isConnected =false;
     
-    public ButtonController getCable()
+    public ButtonController16bit getCable()
     {
         return Out;
     }
-    public CableManager16bit getInputA()
+    public ButtonController_CableManager getInputA()
     {
         return inputA;
     }
-    public CableManager16bit getInputB()
+    public ButtonController_CableManager getInputB()
     {
         return inputB;
     }
@@ -37,16 +37,19 @@ public class Add16_Gate : MonoBehaviour
     {
         if(inputA != null && inputB != null)
         {
-            if(inputA.getConnectedCable() == null)
+            if(inputA.GetCable16Saved() == null )
             {
                 isConnected=true;
             }
-            if(inputB.getConnectedCable() == null)
+            if(inputB.GetCable16Saved() == null )
             {
                 isConnected=true;
             }
-        
-            if (inputA.getConnectedCable() != null && inputB.getConnectedCable() != null && isConnected)
+
+            //  Debug.Log($" input a{inputA.GetSelectedCable16() != null}");
+            if ((inputA.GetCable16Saved() != null || inputA.GetsizeCableManagers() ==inputA.getSizeTruthTable() )
+            && (inputB.GetCable16Saved() != null || inputB.GetsizeCableManagers() ==inputB.getSizeTruthTable())
+            && isConnected)
             {
                 print("Both inputs are now connected!");
                 isConnected=false;
@@ -62,15 +65,17 @@ public class Add16_Gate : MonoBehaviour
             bool carry = false;
             for (int j=0;j< truthTableA[i].truthTable.Count ;j++)
             {
-                newTruthTable[i].truthTable[j] = (truthTableA[i].truthTable[j] ^ truthTableB[i].truthTable[j] ^ carry);
-                carry = (truthTableA[i].truthTable[j] && truthTableB[i].truthTable[j]) || (truthTableA[i].truthTable[j] &&  carry) || ( truthTableB[i].truthTable[j] && carry);
+                bool a=truthTableA[i].truthTable[j];
+                bool b= truthTableB[i].truthTable[j];
+                newTruthTable[i].truthTable[j] = a^b ^ carry;
+                carry = (a && b) || (a &&  carry) || ( b && carry);
             }
         }
         return newTruthTable;
     }
     private void UpdateTruthTable()
     {
-        Out.SetTruthTable(Evaluate(inputA.getConnectedCable().GetTruthTable(),inputB.getConnectedCable().GetTruthTable()));
+        Out.SetTruthTable(Evaluate(inputA.GetCable16Saved().GetTruthTable(),inputB.GetCable16Saved().GetTruthTable()));
         List<Cable16bitTruthTable> new11TruthTable=Out.GetTruthTable();
         Debug.Log("Input A AddGate: ");
         for(int i=0;i<new11TruthTable.Count;i++)
@@ -118,6 +123,24 @@ public class Add16_Gate : MonoBehaviour
 
         return result;
     }
+    // public static List<Cable16bitTruthTable> TestA()
+    // {
+    //     List<Cable16bitTruthTable> result = new List<Cable16bitTruthTable>();
+    //     // Row 1
+    //     result.Add(new Cable16bitTruthTable(new List<bool> {false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false}));
+    //     //Row 2
+    //     result.Add(new Cable16bitTruthTable(new List<bool> {false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false}));
+    //     // Row 3
+    //     result.Add(new Cable16bitTruthTable(new List<bool> {true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true}));
+    //     // rOW 4
+    //     result.Add(new Cable16bitTruthTable(new List<bool> {true,false,true,false,true,false,true,false,true,false,true,false,true,false,true,false}));
+    //     // Row 5
+    //     result.Add(new Cable16bitTruthTable(new List<bool> {false,false,true,true,true,true,false,false,true,true,false,false,false,false,true,true}));
+    //     // Row 6
+    //     result.Add(new Cable16bitTruthTable(new List<bool> {false,false,false,true,false,false,true,false,false,false,true,true,false,true,false,false}));
+
+    //     return result;
+    // }
 
     public static List<Cable16bitTruthTable> TestB()
     {
@@ -157,6 +180,44 @@ public class Add16_Gate : MonoBehaviour
 
         return result;
     }
+    
+    // public static List<Cable16bitTruthTable> TestB()
+    // {
+    //     List<Cable16bitTruthTable> result = new List<Cable16bitTruthTable>();
+    //     //Row 1
+    //     result.Add(new Cable16bitTruthTable(new List<bool> {false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false}));
+    //     // Row 2
+    //     result.Add(new Cable16bitTruthTable(new List<bool> {true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true}));
+    //     // Row 3
+    //     result.Add(new Cable16bitTruthTable(new List<bool> {true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true}));
+    //     // Row 4
+    //     result.Add(new Cable16bitTruthTable(new List<bool> {false,true,false,true,false,true,false,true,false,true,false,true,false,true,false,true}));
+    //     // Row 5
+    //     result.Add(new Cable16bitTruthTable(new List<bool> {false,false,false,false,true,true,true,true,true,true,true,true,false,false,false,false}));
+    //     // Row 6
+    //     result.Add(new Cable16bitTruthTable(new List<bool> {true,false,false,true,true,false,false,false,false,true,true,true,false,true,true,false}));
+
+    //     return result;
+    // }
+    
+    // public static List<Cable16bitTruthTable>  TestOUT()
+    // {
+    //     List<Cable16bitTruthTable> result = new List<Cable16bitTruthTable>();
+    //     //Row 1
+    //     result.Add(new Cable16bitTruthTable(new List<bool> {false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false}));
+    //     // Row 2
+    //     result.Add(new Cable16bitTruthTable(new List<bool> {true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true}));
+    //     // Row 3
+    //     result.Add(new Cable16bitTruthTable(new List<bool> {false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true}));
+    //     // Row 4
+    //     result.Add(new Cable16bitTruthTable(new List<bool> {true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true}));
+    //     // Row 5
+    //     result.Add(new Cable16bitTruthTable(new List<bool> {false,false,true,true,false,true,false,false,true,true,false,false,true,false,true,true}));
+    //     // Row 6
+    //     result.Add(new Cable16bitTruthTable(new List<bool> {true,false,false,false,false,true,true,false,false,true,false,true,true,false,false,true}));
+    //     return result;
+    // }
+    
     public static List<Cable16bitTruthTable>  TestOUT()
     {
         List<Cable16bitTruthTable> result = new List<Cable16bitTruthTable>();

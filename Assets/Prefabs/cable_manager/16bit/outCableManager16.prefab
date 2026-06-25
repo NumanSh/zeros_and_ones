@@ -948,7 +948,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 13.7505, y: 0.414, z: -0.6028474}
-  m_LocalScale: {x: 1.300202, y: 0.94481176, z: 1}
+  m_LocalScale: {x: 1.8202828, y: 1.7006612, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 509015371429837174}
@@ -1088,22 +1088,23 @@ MonoBehaviour:
   prefabToSpawnCable16_Mangar: {fileID: 1522742188258548009, guid: 821b49f8ab2bf544cba098a5615fbe9b, type: 3}
   bitButtons:
   - {fileID: 149823686931865927}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1379523543039357122}
+  - {fileID: 5132404263545842165}
+  - {fileID: 1485119854479354746}
+  - {fileID: 83812787340196761}
+  - {fileID: 2193228373272694130}
+  - {fileID: 6479644226185362886}
+  - {fileID: 6700144256996139208}
+  - {fileID: 8355502326972640676}
+  - {fileID: 8353895714821052610}
+  - {fileID: 1751361964706730298}
+  - {fileID: 7866730368839453583}
+  - {fileID: 2837235786097534337}
+  - {fileID: 8748238512810336240}
+  - {fileID: 569026623217014075}
+  - {fileID: 4291957685526310269}
   iselected: 0
+  sizeCableManagers: 16
 --- !u!1 &2574595746158688895
 GameObject:
   m_ObjectHideFlags: 0
@@ -2211,7 +2212,7 @@ GameObject:
   - component: {fileID: 3212883692897850290}
   - component: {fileID: 3153027521826137007}
   - component: {fileID: 4780288803153148781}
-  - component: {fileID: 5058278626086730158}
+  - component: {fileID: 3900529465081251111}
   m_Layer: 0
   m_Name: All16bit
   m_TagString: Untagged
@@ -2321,7 +2322,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5058278626086730158
+--- !u!114 &3900529465081251111
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2330,13 +2331,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5214730754785816955}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3be3913a2598da14aaa94a864aa33fb0, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c6168d5321e2494f8823919e5b1ffe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isPressed: 0
-  prefabToSpawnCable: {fileID: 7707081591908561022, guid: bda3599bd74b92d45a199e4ff07f4e0a, type: 3}
+  prefabToSpawnCable: {fileID: 1522742188258548009, guid: 821b49f8ab2bf544cba098a5615fbe9b, type: 3}
   bitSelectionPanel: {fileID: 398236707809829771}
-  positionToSpawnCable: {fileID: 0}
+  positionToSpawnCable: {fileID: 1282239443435851272}
   truthTable: []
 --- !u!1 &5284572405672483929
 GameObject:

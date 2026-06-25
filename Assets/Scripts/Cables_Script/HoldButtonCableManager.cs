@@ -12,12 +12,23 @@ public class HoldButtonCableManager : MonoBehaviour, IPointerDownHandler, IPoint
     public GameObject bitSelectionPanel;
     public GameObject positionToSpawnCable;
     private ButtonController16bit buttonController16bit;
-    [SerializeField] public List<Cable16bitTruthTable> truthTable = new List<Cable16bitTruthTable>(new Cable16bitTruthTable[16]);
+    private int sizeTruthTable=16;
+    [SerializeField] public List<Cable16bitTruthTable> truthTable ;
     private Vector3 panelOffset;
-    public int bitIndex;
+    private int bitIndex ;
    
     
 
+    public void SetBitIndex(int index)
+    {
+        bitIndex=index;
+    }
+    void Start()
+    {
+        ButtonController_CableManager buttonController =positionToSpawnCable.GetComponent<ButtonController_CableManager>();
+        sizeTruthTable = buttonController.GetsizeCableManagers();
+        truthTable = new List<Cable16bitTruthTable>(new Cable16bitTruthTable[sizeTruthTable]);
+    }
     
 
 
@@ -38,7 +49,7 @@ public class HoldButtonCableManager : MonoBehaviour, IPointerDownHandler, IPoint
             Debug.LogError("ButtonController_CableManager component not found on positionToSpawnCable.");
             return;
         }
-        
+        Debug.Log($"added cable manager {bitIndex}");
         
         
         if (spawnedCables != null)
@@ -54,7 +65,7 @@ public class HoldButtonCableManager : MonoBehaviour, IPointerDownHandler, IPoint
             if (prefabToSpawnCable != null)
             {
                 
-                GameObject newCable = Instantiate(prefabToSpawnCable, transform.position, transform.rotation, transform.parent);
+                GameObject newCable = Instantiate(prefabToSpawnCable, transform.position, transform.rotation, positionToSpawnCable.transform.parent);
                 // Debug.Log(newCable.transform.position);
                 // Debug.Log("EndA Pos: " + transform.position);
                 newCable.transform.localScale = transform.localScale;
@@ -72,11 +83,13 @@ public class HoldButtonCableManager : MonoBehaviour, IPointerDownHandler, IPoint
                         
                             
                         Cable selectedCable = buttonController.GetSelectedCable();
-                        if(selectedCable != null)
+                        if(selectedCable != null && bitIndex >=0 && bitIndex<sizeTruthTable)
                         {
                             cableScript.ConnectCable(selectedCable);
-                            buttonController.truthTable[bitIndex].truthTable = new List<bool>(selectedCable.truthTable);
-                            truthTable[bitIndex].truthTable = new List<bool>(selectedCable.truthTable);
+                            Debug.Log($"sameh {selectedCable} cable manager");
+                            Debug.Log($"sameh {bitIndex} bit manager");
+                            // buttonController.truthTable[bitIndex].truthTable = new List<bool>(selectedCable.truthTable);
+                            // truthTable[0].truthTable = new List<bool>(selectedCable.truthTable);
                             // selectedCable.SetButton_cableManager( bitButtons[bitIndex]);
                             selectedCable.SetTargetConnector(cableScript);
                             // index++;
@@ -113,6 +126,7 @@ public class HoldButtonCableManager : MonoBehaviour, IPointerDownHandler, IPoint
     {
         
         isPressed = true;
+        Debug.Log($"{bitIndex}");
         Creat_A_Cable(); 
         Debug.Log("Hold button is being pressed.");
     }

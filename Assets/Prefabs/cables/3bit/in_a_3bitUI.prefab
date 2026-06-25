@@ -571,20 +571,7 @@ MonoBehaviour:
   bitButtons:
   - {fileID: 8279235111811687078}
   - {fileID: 9100695817648061969}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1324988600022059845}
 --- !u!1 &5244675491946689223
 GameObject:
   m_ObjectHideFlags: 0
