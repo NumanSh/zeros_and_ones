@@ -42,7 +42,7 @@ namespace ZerosAndOnes.Gameplay
             _rb = GetComponent<Rigidbody2D>();
             _collider = GetComponent<Collider2D>();
             _animator = GetComponent<Animator>();
-            
+
             if (spriteRenderer == null)
             {
                 spriteRenderer = GetComponentInChildren<SpriteRenderer>();

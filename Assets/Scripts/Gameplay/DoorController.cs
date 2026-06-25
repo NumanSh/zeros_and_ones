@@ -38,9 +38,10 @@ namespace ZerosAndOnes.Gameplay
             {
                 _isTransitioning = true;
                 string sceneName = GetSceneNameForGate(gateType);
-                
+                ExitButton.LastExplorationMap = SceneManager.GetActiveScene().name;
+
                 Debug.Log($"[DoorController] Player touched door of type {gateType}. Transitioning to scene: {sceneName}");
-                
+
                 if (GameManager.Instance != null)
                 {
                     GameManager.Instance.LoadScene(sceneName);
@@ -68,7 +69,9 @@ namespace ZerosAndOnes.Gameplay
             }
         }
 
-        private string GetSceneNameForGate(LogicGates_Type type)
+        private string GetSceneNameForGate(LogicGates_Type type) => GetSceneNameForGateType(type);
+
+        public static string GetSceneNameForGateType(LogicGates_Type type)
         {
             switch (type)
             {
@@ -92,7 +95,23 @@ namespace ZerosAndOnes.Gameplay
                     return "Add16_Scene";
                 case LogicGates_Type.Inc16:
                     return "Inc16_Scene";
-                default: 
+                case LogicGates_Type.Or4Way:
+                    return "Or4Way_Scene";
+                case LogicGates_Type.Mux:
+                    return "Mux_Scene";
+                case LogicGates_Type.Mux16:
+                    return "Mux16_Scene";
+                case LogicGates_Type.Mux4Way16:
+                    return "Mux16_4Way_Scene";
+                case LogicGates_Type.Mux8Way16:
+                    return "Mux16_8Way_Scene";
+                case LogicGates_Type.Dmux:
+                    return "Dmux_Scene";
+                case LogicGates_Type.Dmux4Way:
+                    return "Dmux4Way_Scene";
+                case LogicGates_Type.Dmux8Way:
+                    return "Dmux8Way_Scene";
+                default:
                     return type.ToString(); // Fallback
             }
         }
