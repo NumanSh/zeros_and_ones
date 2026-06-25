@@ -102,8 +102,8 @@ public class Cable16bit : MonoBehaviour
                 else if (connectorCableManager != null)
                 {
                     connectorCableManager.SetIsSelected(true);
-                    // connectorCableManager.SetSelectedCable(this);
-                    connectorCableManager.ShowBitSelectionUI();
+                    connectorCableManager.SetSelectedCable16(this);
+                    // connectorCableManager.ShowBitSelectionUI();
                     ButtonController = connectorCableManager;
                 }
                 else
@@ -128,6 +128,13 @@ public class Cable16bit : MonoBehaviour
         // 3. عند رفع الإصبع عن زر الماوس
         if (Input.GetMouseButtonDown(0))
         {
+            if (ButtonController != null && isDragging)
+            {
+                ButtonController.ShowBitSelectionUI();
+                lineRenderer.SetPosition(1, new Vector3(ButtonController.transform.position.x, ButtonController.transform.position.y, 0f));
+                isDragging = false;
+                return;
+            }
             if (isDragging && targetConnector != null)
             {
                 if (CableManager1 != null)
@@ -135,10 +142,7 @@ public class Cable16bit : MonoBehaviour
                     CableManager1.DisconnectCable();
                     CableManager1 = null;
                 }
-                if (ButtonController != null)
-                {
-                    ButtonController.CloseBitSelectionUI();
-                }
+                
 
                 lineRenderer.SetPosition(1, new Vector3(targetConnector.transform.position.x, targetConnector.transform.position.y, 0f));
                 targetConnector.ConnectCable(this);
@@ -153,8 +157,7 @@ public class Cable16bit : MonoBehaviour
             isDragging = false;
         }
 
-        // 4. إذا لم يكن هناك سحب والكابل غير موصول
-        if (endPoint != null && !isDragging && targetConnector == null)
+        if (endPoint != null && !isDragging && targetConnector == null&& ButtonController == null)
         {
             if (CableManager1 != null)
             {

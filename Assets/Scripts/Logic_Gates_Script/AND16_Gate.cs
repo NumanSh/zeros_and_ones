@@ -16,8 +16,8 @@ public class AND16_Gate : MonoBehaviour
     {
         ID_Gate = id;
     }
-    [SerializeField] private CableManager16bit inputA; 
-    [SerializeField] private CableManager16bit inputB; 
+    [SerializeField] private ButtonController_CableManager inputA; 
+    [SerializeField] private ButtonController_CableManager inputB; 
     public ButtonController16bit Out;
     private bool isConnected =false;
     
@@ -25,11 +25,11 @@ public class AND16_Gate : MonoBehaviour
     {
         return Out;
     }
-    public CableManager16bit getInputA()
+    public ButtonController_CableManager getInputA()
     {
         return inputA;
     }
-    public CableManager16bit getInputB()
+    public ButtonController_CableManager getInputB()
     {
         return inputB;
     }
@@ -37,16 +37,18 @@ public class AND16_Gate : MonoBehaviour
     {
         if(inputA != null && inputB != null)
         {
-            if(inputA.getConnectedCable() == null)
+            if(inputA.GetCable16Saved() == null)
             {
                 isConnected=true;
             }
-            if(inputB.getConnectedCable() == null)
+            if(inputB.GetCable16Saved() == null)
             {
                 isConnected=true;
             }
         
-            if (inputA.getConnectedCable() != null && inputB.getConnectedCable() != null && isConnected)
+            if ((inputA.GetCable16Saved() != null || inputA.GetsizeCableManagers() ==inputA.getSizeTruthTable() )
+            && (inputB.GetCable16Saved() != null || inputB.GetsizeCableManagers() ==inputB.getSizeTruthTable())
+            && isConnected)
             {
                 print("Both inputs are now connected!");
                 isConnected=false;
@@ -68,13 +70,13 @@ public class AND16_Gate : MonoBehaviour
     }
     private void UpdateTruthTable()
     {
-        // Out.SetTruthTable(Evaluate(inputA.getConnectedCable().GetTruthTable(),inputB.getConnectedCable().GetTruthTable()));
-        // List<Cable16bitTruthTable> new11TruthTable=Out.GetTruthTable();
-        // Debug.Log("Input A ANDGate: ");
-        // for(int i=0;i<new11TruthTable.Count;i++)
-        // {
-        //     Debug.Log("  "+i +" "+ string.Join(", ", new11TruthTable[i].truthTable));
-        // }
+        Out.SetTruthTable(Evaluate(inputA.GetCable16Saved().GetTruthTable(),inputB.GetCable16Saved().GetTruthTable()));
+        List<Cable16bitTruthTable> new11TruthTable=Out.GetTruthTable();
+        Debug.Log("Input A ANDGate: ");
+        for(int i=0;i<new11TruthTable.Count;i++)
+        {
+            Debug.Log("  "+i +" "+ string.Join(", ", new11TruthTable[i].truthTable));
+        }
         
         
     }

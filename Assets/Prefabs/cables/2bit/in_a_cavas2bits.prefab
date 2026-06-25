@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 881f4e70f13afec4ab10e73b39b84a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 0
+  Name: 8
   bitSelectionPanel: {fileID: 7053388684504432199}
   panelOffset: {x: 0, y: 0, z: 0}
   truthTable: []
@@ -794,7 +794,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.89, y: -12.92, z: -3.0719323}
-  m_LocalScale: {x: 1.3333334, y: 1.3333334, z: 2}
+  m_LocalScale: {x: 1.3333334, y: 1.2666667, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1796555824304031292}
@@ -2854,6 +2854,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3942428896702486193, guid: f660ad32413e77041bfd3d965b545a2a, type: 3}
+      propertyPath: bitButtons.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7783572258304498305, guid: f660ad32413e77041bfd3d965b545a2a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -3005,6 +3009,10 @@ PrefabInstance:
     - target: {fileID: 3625018557682242279, guid: f660ad32413e77041bfd3d965b545a2a, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942428896702486193, guid: f660ad32413e77041bfd3d965b545a2a, type: 3}
+      propertyPath: bitButtons.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7783572258304498305, guid: f660ad32413e77041bfd3d965b545a2a, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3158,6 +3166,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3942428896702486193, guid: f660ad32413e77041bfd3d965b545a2a, type: 3}
+      propertyPath: bitButtons.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7783572258304498305, guid: f660ad32413e77041bfd3d965b545a2a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -3309,6 +3321,10 @@ PrefabInstance:
     - target: {fileID: 3625018557682242279, guid: f660ad32413e77041bfd3d965b545a2a, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942428896702486193, guid: f660ad32413e77041bfd3d965b545a2a, type: 3}
+      propertyPath: bitButtons.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7783572258304498305, guid: f660ad32413e77041bfd3d965b545a2a, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3462,6 +3478,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3942428896702486193, guid: f660ad32413e77041bfd3d965b545a2a, type: 3}
+      propertyPath: bitButtons.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7783572258304498305, guid: f660ad32413e77041bfd3d965b545a2a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -3613,6 +3633,10 @@ PrefabInstance:
     - target: {fileID: 3625018557682242279, guid: f660ad32413e77041bfd3d965b545a2a, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942428896702486193, guid: f660ad32413e77041bfd3d965b545a2a, type: 3}
+      propertyPath: bitButtons.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7783572258304498305, guid: f660ad32413e77041bfd3d965b545a2a, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3766,6 +3790,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3942428896702486193, guid: f660ad32413e77041bfd3d965b545a2a, type: 3}
+      propertyPath: bitButtons.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7783572258304498305, guid: f660ad32413e77041bfd3d965b545a2a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -3918,6 +3946,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3942428896702486193, guid: f660ad32413e77041bfd3d965b545a2a, type: 3}
+      propertyPath: bitButtons.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7783572258304498305, guid: f660ad32413e77041bfd3d965b545a2a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -4069,6 +4101,10 @@ PrefabInstance:
     - target: {fileID: 3625018557682242279, guid: f660ad32413e77041bfd3d965b545a2a, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942428896702486193, guid: f660ad32413e77041bfd3d965b545a2a, type: 3}
+      propertyPath: bitButtons.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7783572258304498305, guid: f660ad32413e77041bfd3d965b545a2a, type: 3}
       propertyPath: m_AnchorMax.y

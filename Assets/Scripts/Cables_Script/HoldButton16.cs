@@ -87,24 +87,16 @@ public class HoldButton16 : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         bitSelectionPanel.SetActive(false);
     }
 
-    // void Update()
-    // {
-    //     if (truthTable.Count == 0)
-    //     {
-    //         SetTruthTable(positionToSpawnCable.GetComponent<ButtonController1bit>().GetTruthTable());
-    //     }
-    // }
-
+    
     
     public void OnPointerDown(PointerEventData eventData)
     {
         isPressed = true;
-        Creat_A_Cable16bit(); // يمكنك تعديل هذا الرقم ليمثل أي زر تريد
+        Creat_A_Cable16bit(); 
         Debug.Log("Hold button is being pressed.");
     }
 
-    // تتنفذ تلقائياً أول ما يرفع اللاعب إصبعه عن الزر
-    public void OnPointerUp(PointerEventData eventData)
+      public void OnPointerUp(PointerEventData eventData)
     {
         isPressed = false;
     }

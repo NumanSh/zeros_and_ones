@@ -13,26 +13,26 @@ public class Dmux4Way_Gate : MonoBehaviour
     }
     [SerializeField] private CableManager inputIn; 
 
-    [SerializeField] private CableManager16bit inputSel; 
-    public Cable OutA;
-    public Cable OutB;
-    public Cable OutC;
-    public Cable OutD;
+    [SerializeField] private ButtonController_CableManager inputSel; 
+    public ButtonController1bit OutA;
+    public ButtonController1bit OutB;
+    public ButtonController1bit OutC;
+    public ButtonController1bit OutD;
     private bool isConnected =false;
     
-    public Cable getCableA()
+    public ButtonController1bit getCableA()
     {
         return OutA;
     }
-    public Cable getCableB()
+    public ButtonController1bit getCableB()
     {
         return OutB;
     }
-    public Cable getCableC()
+    public ButtonController1bit getCableC()
     {
         return OutC;
     }
-    public Cable getCableD()
+    public ButtonController1bit getCableD()
     {
         return OutD;
     }
@@ -40,7 +40,7 @@ public class Dmux4Way_Gate : MonoBehaviour
     {
         return inputIn;
     }
-    public CableManager16bit getInputSel()
+    public ButtonController_CableManager getInputSel()
     {
         return inputSel;
     }
@@ -52,12 +52,13 @@ public class Dmux4Way_Gate : MonoBehaviour
             {
                 isConnected=true;
             }
-            if(inputSel.getConnectedCable() == null)
+            if(inputSel.GetCable16Saved() == null)
             {
                 isConnected=true;
             }
         
-            if (inputIn.getConnectedCable() != null  && inputSel.getConnectedCable() != null && isConnected)
+            if (inputIn.getConnectedCable() != null   && isConnected
+            && (inputSel.GetCable16Saved() != null || inputSel.GetsizeCableManagers() ==inputSel.getSizeTruthTable() ))
             {
                 print("Both inputs are now connected!");
                 isConnected=false;
@@ -70,7 +71,7 @@ public class Dmux4Way_Gate : MonoBehaviour
         List<bool> newTruthTable = new List<bool>(truthTableIn);
         for (int i = 0; i < truthTableIn.Count; i++)
         {
-            if(!truthTableSel[0].truthTable[i] && !truthTableSel[i].truthTable[i])
+            if(!truthTableSel[0].truthTable[i] && !truthTableSel[1].truthTable[i])
             {
                 newTruthTable[i] = truthTableIn[i] ;
             }
@@ -86,7 +87,7 @@ public class Dmux4Way_Gate : MonoBehaviour
         List<bool> newTruthTable = new List<bool>(truthTableIn);
         for (int i = 0; i < truthTableIn.Count; i++)
         {
-            if(!truthTableSel[0].truthTable[i] && truthTableSel[i].truthTable[i])
+            if(!truthTableSel[0].truthTable[i] && truthTableSel[1].truthTable[i])
             {
                 newTruthTable[i] = truthTableIn[i] ;
             }
@@ -102,7 +103,7 @@ public class Dmux4Way_Gate : MonoBehaviour
         List<bool> newTruthTable = new List<bool>(truthTableIn);
         for (int i = 0; i < truthTableIn.Count; i++)
         {
-            if(truthTableSel[0].truthTable[i] && !truthTableSel[i].truthTable[i])
+            if(truthTableSel[0].truthTable[i] && !truthTableSel[1].truthTable[i])
             {
                 newTruthTable[i] = truthTableIn[i] ;
             }
@@ -118,7 +119,7 @@ public class Dmux4Way_Gate : MonoBehaviour
         List<bool> newTruthTable = new List<bool>(truthTableIn);
         for (int i = 0; i < truthTableIn.Count; i++)
         {
-            if(truthTableSel[0].truthTable[i] && truthTableSel[i].truthTable[i])
+            if(truthTableSel[0].truthTable[i] && truthTableSel[1].truthTable[i])
             {
                 newTruthTable[i] = truthTableIn[i] ;
             }
@@ -131,14 +132,15 @@ public class Dmux4Way_Gate : MonoBehaviour
     }
     private void UpdateTruthTable()
     {
-        OutA.SetTruthTable(EvaluateA(inputIn.getConnectedCable().GetTruthTable(),inputSel.getConnectedCable().GetTruthTable()));
-        Debug.Log("OUT A MuxGate: " + string.Join(", ", OutA.GetTruthTable()));
-        OutB.SetTruthTable(EvaluateB(inputIn.getConnectedCable().GetTruthTable(),inputSel.getConnectedCable().GetTruthTable()));
-        Debug.Log("OUT B MuxGate: " + string.Join(", ", OutA.GetTruthTable()));
-        OutC.SetTruthTable(EvaluateC(inputIn.getConnectedCable().GetTruthTable(),inputSel.getConnectedCable().GetTruthTable()));
-        Debug.Log("OUT C MuxGate: " + string.Join(", ", OutA.GetTruthTable()));
-        OutD.SetTruthTable(EvaluateD(inputIn.getConnectedCable().GetTruthTable(),inputSel.getConnectedCable().GetTruthTable()));
-        Debug.Log("OUT D MuxGate: " + string.Join(", ", OutA.GetTruthTable()));
+        
+        OutA.SetTruthTable(EvaluateA(inputIn.getConnectedCable().GetTruthTable(),inputSel.GetTruthTable()));
+        Debug.Log("OUT a MuxGate: " + string.Join(", ", OutA.GetTruthTable()));
+        OutB.SetTruthTable(EvaluateB(inputIn.getConnectedCable().GetTruthTable(),inputSel.GetTruthTable()));
+        Debug.Log("OUT B MuxGate: " + string.Join(", ", OutB.GetTruthTable()));
+        OutC.SetTruthTable(EvaluateC(inputIn.getConnectedCable().GetTruthTable(),inputSel.GetTruthTable()));
+        Debug.Log("OUT C MuxGate: " + string.Join(", ", OutC.GetTruthTable()));
+        OutD.SetTruthTable(EvaluateD(inputIn.getConnectedCable().GetTruthTable(),inputSel.GetTruthTable()));
+        Debug.Log("OUT D MuxGate: " + string.Join(", ", OutD.GetTruthTable()));
         
         
     }

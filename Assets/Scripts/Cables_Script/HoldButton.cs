@@ -162,8 +162,7 @@ public class HoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         }
     }
 
-    // تتنفذ تلقائياً أول ما يرفع اللاعب إصبعه عن الزر
-    public void OnPointerUp(PointerEventData eventData)
+       public void OnPointerUp(PointerEventData eventData)
     {
         isPressed = false;
     }

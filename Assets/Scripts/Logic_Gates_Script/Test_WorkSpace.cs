@@ -163,6 +163,13 @@ public class Test_WorkSpace : MonoBehaviour
         SearchAndPrintCable(ConnectorType.InSel,Dmux4Way_Gate.TestIN_SEL(),CableTypes.c16);
         
     }
+    private void Dmux8Way_Gate_tests()
+    {
+        
+        SearchAndPrintCable(ConnectorType.In,Dmux8Way_Gate.TestIN(),CableTypes.c1);
+        SearchAndPrintCable(ConnectorType.InSel,Dmux8Way_Gate.TestIN_SEL(),CableTypes.c16);
+        
+    }
     private void HalfAdder_Gate_tests()
     {
         SearchAndPrintCable(ConnectorType.InA,HalfAdder_Gate.TestA(),CableTypes.c1);
@@ -183,8 +190,8 @@ public class Test_WorkSpace : MonoBehaviour
     private void InC16_Gate_tests()
     {
         SearchAndPrintCable(ConnectorType.InA,Inc16_Gate.TestA(),CableTypes.c16);
-        // SearchAndPrintCable(ConnectorType.InB,Inc16_Gate.TestB(),CableTypes.c16);
-        // SearchAndPrintCable(ConnectorType.InC,Inc16_Gate.TestC(),CableTypes.c16);
+        SearchAndPrintCable(ConnectorType.InB,Inc16_Gate.TestB(),CableTypes.c16);
+        SearchAndPrintCable(ConnectorType.InC,Inc16_Gate.TestC(),CableTypes.c16);
     }
     private void Or4Way_Gate_tests()
     {
@@ -243,6 +250,10 @@ public class Test_WorkSpace : MonoBehaviour
         else if (Name == LogicGates_Type.Dmux4Way)
         {
             Dmux4Way_Gate_tests();
+        }
+        else if (Name == LogicGates_Type.Dmux8Way)
+        {
+            Dmux8Way_Gate_tests();
         }
         else if (Name == LogicGates_Type.HalfAdder)
         {
@@ -306,8 +317,10 @@ public class Test_WorkSpace : MonoBehaviour
         
         for (int i=0; i<cableManagaer16TruthTables.Count ;i++)
         {
-            if (cableManagaer16TruthTables[i] != null  && cableManagaer16TruthTables[i].cableManagers.getSizeTruthTable() == 16)
+            
+            if (cableManagaer16TruthTables[i] != null  && (cableManagaer16TruthTables[i].cableManagers.getSizeTruthTable() == 16 || cableManagaer16TruthTables[i].cableManagers.GetCable16Saved()))
             {
+                Cable16bit cable = cableManagaer16TruthTables[i].cableManagers.GetCable16Saved();
                 var actualTruthTable = cableManagaer16TruthTables[i].cableManagers.GetTruthTable();
                 var cableManagerName= cableManagaer16TruthTables[i].cableManagers.Name;
                 if(Name == LogicGates_Type.Mux4Way16 )
@@ -398,6 +411,17 @@ public class Test_WorkSpace : MonoBehaviour
                 {
                     if(cableManagerName == ConnectorType.Out)
                     {
+                        int sizeTruthTables=cableManagaer16TruthTables[i].cableManagers.getSizeTruthTable();
+                        
+                        if (cable != null || sizeTruthTables== 16)
+                        {
+                            if (!CheckTruth16Table(actualTruthTable, Add16_Gate.TestOUT()))
+                            {
+                                Debug.LogError("All tests passed for 16-bit gate!");
+                                
+                                break;
+                            }
+                        }
                         if (!CheckTruth16Table(actualTruthTable, Add16_Gate.TestOUT()))
                         {
                             isSolves16=false;
@@ -494,6 +518,102 @@ public class Test_WorkSpace : MonoBehaviour
                         isSolves=true;
                         // Debug.Log($"i find {cableManagerName}  cableTruthTables.");
                     }
+                    else
+                    {
+                        Debug.Log($"i find {cableManagerName}  cableTruthTables.");
+                    }
+                }
+                if (Name == LogicGates_Type.Dmux8Way)
+                {
+                    if(cableManagerName == ConnectorType.InA)
+                    {
+                        if (!CheckTruthTable(actualTruthTable, Dmux8Way_Gate.TestA()))
+                        {
+                            isSolves=false;
+                            break;
+                        }
+                        count++;
+                        isSolves=true;
+                        // Debug.Log($"i find {cableManagerName}  cableTruthTables.");
+                    }
+                    else if(cableManagerName == ConnectorType.InB)
+                    {
+                        if (!CheckTruthTable(actualTruthTable, Dmux8Way_Gate.TestB()))
+                        {
+                            isSolves=false;
+                            break;
+                        }
+                        count++;
+                        isSolves=true;
+                        // Debug.Log($"i find {cableManagerName}  cableTruthTables.");
+                    }
+                    else if(cableManagerName == ConnectorType.InC)
+                    {
+                        if (!CheckTruthTable(actualTruthTable, Dmux8Way_Gate.TestC()))
+                        {
+                            isSolves=false;
+                            break;
+                        }
+                        count++;
+                        isSolves=true;
+                        // Debug.Log($"i find {cableManagerName}  cableTruthTables.");
+                    }
+                    else if(cableManagerName == ConnectorType.InD)
+                    {
+                        if (!CheckTruthTable(actualTruthTable, Dmux8Way_Gate.TestD()))
+                        {
+                            isSolves=false;
+                            break;
+                        }
+                        count++;
+                        isSolves=true;
+                        // Debug.Log($"i find {cableManagerName}  cableTruthTables.");
+                    }
+                    else if(cableManagerName == ConnectorType.InE)
+                    {
+                        if (!CheckTruthTable(actualTruthTable, Dmux8Way_Gate.TestE()))
+                        {
+                            isSolves=false;
+                            break;
+                        }
+                        count++;
+                        isSolves=true;
+                        // Debug.Log($"i find {cableManagerName}  cableTruthTables.");
+                    }
+                    else if(cableManagerName == ConnectorType.InF)
+                    {
+                        if (!CheckTruthTable(actualTruthTable, Dmux8Way_Gate.TestF()))
+                        {
+                            isSolves=false;
+                            break;
+                        }
+                        count++;
+                        isSolves=true;
+                        // Debug.Log($"i find {cableManagerName}  cableTruthTables.");
+                    }
+                    else if(cableManagerName == ConnectorType.InG)
+                    {
+                        if (!CheckTruthTable(actualTruthTable, Dmux8Way_Gate.TestG()))
+                        {
+                            isSolves=false;
+                            break;
+                        }
+                        count++;
+                        isSolves=true;
+                        // Debug.Log($"i find {cableManagerName}  cableTruthTables.");
+                    }
+                    else if(cableManagerName == ConnectorType.InH)
+                    {
+                        if (!CheckTruthTable(actualTruthTable, Dmux8Way_Gate.TestH()))
+                        {
+                            isSolves=false;
+                            break;
+                        }
+                        count++;
+                        isSolves=true;
+                        // Debug.Log($"i find {cableManagerName}  cableTruthTables.");
+                    }
+                    
                     else
                     {
                         Debug.Log($"i find {cableManagerName}  cableTruthTables.");
@@ -639,14 +759,18 @@ public class Test_WorkSpace : MonoBehaviour
         }
 
 
-        if(isSolves16 && count16 == cableManagaer16TruthTables.Count)
+        if(isSolves16 && count16 == cableManagaer16TruthTables.Count )
         {
             isAllCorrect16=true;
             if (cableManagaerTruthTables.Count == 0)
             {
-                if (challenge.GetComponent<Timer>().GetIsComplete())
+                if (challenge !=null )
                 {
-                    challengeUI_win.SetActive(true);
+                    Timer x=challenge.GetComponent<Timer>() ;
+                    if (x != null && x.GetIsComplete())
+                    {
+                        challengeUI_win.SetActive(true);
+                    }
                     
                 }
                 else
@@ -694,10 +818,14 @@ public class Test_WorkSpace : MonoBehaviour
 
     private bool CheckTruth16Table(List<Cable16bitTruthTable> truthTable,List<Cable16bitTruthTable> actualTruthTable)
     {
-        if(truthTable.Count == actualTruthTable.Count)
+        if(truthTable.Count == actualTruthTable.Count )
         {   
             for(int i=0;i<actualTruthTable.Count;i++)
             {
+                if (truthTable[i].truthTable.Count != actualTruthTable[i].truthTable.Count)
+                {
+                    return false;
+                }
                 for (int j=0;j< actualTruthTable[i].truthTable.Count ;j++)
                 {
                     if(actualTruthTable[i].truthTable[j] != truthTable[i].truthTable[j])

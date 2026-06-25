@@ -3,31 +3,29 @@ using System.Collections.Generic;
 public class Inc16_Gate : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    [SerializeField] private CableManager16bit input; 
-    public Cable16bit Out;
-    public Cable16bit getCable()
+    [SerializeField] private ButtonController_CableManager input; 
+    public ButtonController16bit Out;
+    public ButtonController16bit getCable()
     {
         return Out;
     }
-    public CableManager16bit getInput()
+    public ButtonController_CableManager getInput()
     {
         return input;
     }
     private bool isConnected = false;
-    public bool Evaluate(bool value)
-    {
-        return !value;
-    }
+    
     void Update()
     {
         if (input != null  )
         {
-            if(input.getConnectedCable() != null && isConnected)
+            if ((input.GetCable16Saved() != null || input.GetsizeCableManagers() ==input.getSizeTruthTable() )
+            && isConnected)
             {
                 UpdateTruthTable();
                 isConnected =false;
             }
-            if(input.getConnectedCable() == null )
+            if(input.GetCable16Saved() == null )
             {
                 isConnected =true;
             }
@@ -49,12 +47,16 @@ public class Inc16_Gate : MonoBehaviour
     }
     private void UpdateTruthTable()
     {
-        // if (isConnected)
-        // {
-            Out.SetTruthTable(Evaluate(input.getConnectedCable().GetTruthTable()));
-            Debug.Log("Input A notGate: " + string.Join(", ", Out.GetTruthTable()));
-            
-        // }
+        
+        Out.SetTruthTable(Evaluate(input.GetCable16Saved().GetTruthTable()));
+        Debug.Log("Input A notGate: " + string.Join(", ", Out.GetTruthTable()));
+        List<Cable16bitTruthTable> newTruthTable=Out.GetTruthTable();
+        Debug.Log("Input A ORGate: ");
+        for(int i=0;i<newTruthTable.Count;i++)
+        {
+            Debug.Log("  "+i +" "+ string.Join(", ", newTruthTable[i].truthTable));
+        }
+        
         
     }
     
