@@ -1,0 +1,124 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenuMap.unity
+    guid: ec9b89f04c88a744baa35eb76897ab15
+  - enabled: 1
+    path: Assets/Scenes/firstMap.unity
+    guid: 53d8f4bc9731643469557fac02f890f6
+  - enabled: 1
+    path: Assets/Scenes/SecondMap.unity
+    guid: b8509973e580447498d9db2c5b2983b0
+  - enabled: 1
+    path: Assets/Scenes/Logic_gates/Add16_Scene.unity
+    guid: 5fd45d5121ad90441ae82557ae7d37d6
+  - enabled: 1
+    path: Assets/Scenes/Logic_gates/And16_Scene.unity
+    guid: 1ad96f441bb1e754687fc789703bb27e
+  - enabled: 1
+    path: Assets/Scenes/Logic_gates/FullAdder_Scene.unity
+    guid: bf5108cb8ba36b542b5148cb5a7bac3a
+  - enabled: 1
+    path: Assets/Scenes/Logic_gates/HalfAdder_Scene.unity
+    guid: 2b4eb63a7c8d7504d96454042ef74b66
+  - enabled: 1
+    path: Assets/Scenes/Logic_gates/Inc16_Scene.unity
+    guid: 407363632b4270147be98195575d50c0
+  - enabled: 1
+    path: Assets/Scenes/Logic_gates/Lift/Or_Scene.unity
+    guid: cc5d746ec96db9c499627486acbf284a
+  - enabled: 1
+    path: Assets/Scenes/Logic_gates/Not16_Scene.unity
+    guid: 5c88082445b86244e901485725c546ca
+  - enabled: 1
+    path: Assets/Scenes/Logic_gates/Or16_Scene.unity
+    guid: 038c3ef0fa81f704e812bdfab2b78428
+  - enabled: 1
+    path: Assets/Scenes/Logic_gates/Right/Xor_scene.unity
+    guid: 5d93649cd4c6c6c4b98c479ce6396007
+  - enabled: 1
+    path: Assets/Scenes/Logic_gates/map2/Dmux4Way_Scene.unity
+    guid: 4c3968db88b80b74fb2f5394424a8589
+  - enabled: 1
+    path: Assets/Scenes/Logic_gates/map2/Dmux8Way_Scene.unity
+    guid: 1e17581de42de024db2aeb09747870c2
+  - enabled: 1
+    path: Assets/Scenes/Logic_gates/map2/Dmux_Scene.unity
+    guid: 5cde877a6336f4e4eb377d68eaa3c666
+  - enabled: 1
+    path: Assets/Scenes/Logic_gates/map2/Mux16_4Way_Scene.unity
+    guid: 00dbaa5beb29922499ac88a4001c2707
+  - enabled: 1
+    path: Assets/Scenes/Logic_gates/map2/Mux16_8Way_Scene.unity
+    guid: 34193ec981fc9e140921e0b1456ada55
+  - enabled: 1
+    path: Assets/Scenes/Logic_gates/map2/Mux16_Scene.unity
+    guid: 9423dcbbc858f9b47ac079b531cf55ff
+  - enabled: 1
+    path: Assets/Scenes/Logic_gates/map2/Mux_Scene.unity
+    guid: 1bf907afd333e8e43b1fba11b1494bf8
+  - enabled: 1
+    path: Assets/Scenes/Logic_gates/map2/Or8Way_Scene.unity
+    guid: 43fca4883cdf5044b8c2a0a1d1a075ca
+  - enabled: 1
+    path: Assets/Assits_imported/DungeonFloorsAndWallsSamples/DemoScene.unity
+    guid: 8ca5511717970ab4db09831b89095f84
+  - enabled: 1
+    path: Assets/Assits_imported/Fantasy Wooden GUI  Free/Scene/Demo.unity
+    guid: 8e4dd5fd2f28faa4b93c0b75ddb0a6eb
+  - enabled: 1
+    path: Assets/Assits_imported/skies/Sky Backgrounds Pixel Art 1/Scenes/Fly Mode/Background_1.unity
+    guid: c233df36cf27e7b4a9a0416dba7b96af
+  - enabled: 1
+    path: Assets/Assits_imported/skies/Sky Backgrounds Pixel Art 1/Scenes/Fly Mode/Background_2.unity
+    guid: be2c637d973d5784b84518fc26a4063b
+  - enabled: 1
+    path: Assets/Assits_imported/skies/Sky Backgrounds Pixel Art 1/Scenes/Fly Mode/Background_3.unity
+    guid: facc0c52d5e2e5b408a82cc7fb1b38c7
+  - enabled: 1
+    path: Assets/Assits_imported/skies/Sky Backgrounds Pixel Art 1/Scenes/Fly Mode/Background_4.unity
+    guid: 5abbac166668afd458f930390fd2102a
+  - enabled: 1
+    path: Assets/Assits_imported/skies/Sky Backgrounds Pixel Art 1/Scenes/Fly Mode/Background_5.unity
+    guid: 2b29213804199444fbd1046d8744d4b2
+  - enabled: 1
+    path: Assets/Assits_imported/skies/Sky Backgrounds Pixel Art 1/Scenes/Fly Mode/Background_6.unity
+    guid: f84635afbcca0dd4184cda0beede4d76
+  - enabled: 1
+    path: Assets/Assits_imported/skies/Sky Backgrounds Pixel Art 1/Scenes/Fly Mode/Background_7.unity
+    guid: 65b1e6c033f0e9246a1e1cbdc5dc0044
+  - enabled: 1
+    path: Assets/Assits_imported/skies/Sky Backgrounds Pixel Art 1/Scenes/Fly Mode/Background_8.unity
+    guid: 66c26c064c360384b98529feb7562175
+  - enabled: 1
+    path: Assets/Assits_imported/skies/Sky Backgrounds Pixel Art 1/Scenes/Grounded/Background_1.unity
+    guid: 6e5e48e83a6397d49a1352192925238a
+  - enabled: 1
+    path: Assets/Assits_imported/skies/Sky Backgrounds Pixel Art 1/Scenes/Grounded/Background_2.unity
+    guid: a63b7d9df29d26144bdb4b7dd142ffec
+  - enabled: 1
+    path: Assets/Assits_imported/skies/Sky Backgrounds Pixel Art 1/Scenes/Grounded/Background_3.unity
+    guid: a0b0c2193dad12144a9b1332f78adcf4
+  - enabled: 1
+    path: Assets/Assits_imported/skies/Sky Backgrounds Pixel Art 1/Scenes/Grounded/Background_4.unity
+    guid: 76b40356c6edce84587a1b762b620e42
+  - enabled: 1
+    path: Assets/Assits_imported/skies/Sky Backgrounds Pixel Art 1/Scenes/Grounded/Background_5.unity
+    guid: 4c4ce532ecfcf7545b8109af70299338
+  - enabled: 1
+    path: Assets/Assits_imported/skies/Sky Backgrounds Pixel Art 1/Scenes/Grounded/Background_6.unity
+    guid: bf4b6291f3033554fab08f1e0f8d4193
+  - enabled: 1
+    path: Assets/Assits_imported/skies/Sky Backgrounds Pixel Art 1/Scenes/Grounded/Background_7.unity
+    guid: 07d38de831c46ee468d9cb93e85ddba1
+  - enabled: 1
+    path: Assets/Assits_imported/skies/Sky Backgrounds Pixel Art 1/Scenes/Grounded/Background_8.unity
+    guid: c4803f450cfa2444b8879a0b6c8241c6
+  m_configObjects:
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 3590b91b4603b465dbb4216d601bff33, type: 3}
+

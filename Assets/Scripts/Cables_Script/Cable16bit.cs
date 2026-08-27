@@ -1,0 +1,186 @@
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.InputSystem; // جلب نظام المدخلات الجديد
+using System.Collections.Generic;
+public class Cable16bit : MonoBehaviour
+{
+
+    [Header("Line Renderer")]
+    private LineRenderer lineRenderer;
+
+    [Header("Connections (2D)")]
+    public Transform startPoint; 
+    public Transform endPoint;   
+    private CableManager16bit CableManager1 = null; 
+    private CableManager16bit targetConnector = null; 
+
+    [Header("State Flags")]
+    public bool isDragging = false; 
+    private bool isSelected =false;
+
+    public  ConnectorType Name;
+    public List<Cable16bitTruthTable> truthTable = new List<Cable16bitTruthTable>();
+    private List<CableManager16bit> connectedConnectors = new List<CableManager16bit>();
+    private Button button_cableManager =null;
+    private ButtonController_CableManager ButtonController;
+    public void SetTargetConnector(CableManager16bit value)
+    {
+        targetConnector = value;
+    }
+
+    public void SetButton_cableManager(Button value)
+    {
+        button_cableManager = value;
+    }
+    
+    public void setCableManager(CableManager16bit connector)
+    {
+        CableManager1 = connector;
+    }
+    public CableManager16bit getCableManager()
+    {
+        return CableManager1;
+    }
+    public void SetDragging(bool value)
+    {
+        isDragging = value;
+    }
+    public void SetIsSelected(bool value)
+    {
+        isSelected = value;
+    }
+
+    public List<Cable16bitTruthTable> GetTruthTable()
+    {
+        return truthTable;
+    }
+    public void SetTruthTable(List<Cable16bitTruthTable> newTruthTable)
+    {
+
+        truthTable.Clear();
+        foreach (var item in newTruthTable)
+        {
+            truthTable.Add(new Cable16bitTruthTable(new List<bool>(item.truthTable))); 
+        }
+
+    }
+    public Transform getendPoint()
+    {
+        return endPoint;
+    }
+    void Start()
+    {
+       
+        lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer.positionCount = 2;
+        lineRenderer.SetPosition(0, startPoint.position); 
+        lineRenderer.SetPosition(1, endPoint.position); 
+    }
+
+
+
+    void Update()
+    {
+        // Raw Input.GetMouseButtonDown below bypasses the pause menu's raycast blocker, so cables
+        // would stay draggable while paused without this.
+        if (ZerosAndOnes.UI.PauseMenuController.IsPaused) return;
+
+        // keep the socket end pinned to start_point. setting it once in Start() left it
+        // stale whenever the cable or the workspace around it was moved or rescaled.
+        if (lineRenderer != null && startPoint != null)
+        {
+            lineRenderer.SetPosition(0, startPoint.position);
+        }
+
+        if (isDragging )
+        {
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            
+            lineRenderer.SetPosition(1, new Vector3(mousePosition.x, mousePosition.y, 0f));
+
+            RaycastHit2D hitInfo = Physics2D.Raycast(mousePosition, Vector2.zero);
+            
+            if (hitInfo.collider != null)
+            {
+                CableManager16bit connector = hitInfo.collider.GetComponentInParent<CableManager16bit>();
+                ButtonController_CableManager connectorCableManager = hitInfo.collider.GetComponentInParent<ButtonController_CableManager>();
+                
+                if (connector != null && connector.CanConnect())
+                {
+                    targetConnector = connector;
+                }
+                else if (connectorCableManager != null)
+                {
+                    connectorCableManager.SetIsSelected(true);
+                    connectorCableManager.SetSelectedCable16(this);
+                    // connectorCableManager.ShowBitSelectionUI();
+                    ButtonController = connectorCableManager;
+                }
+                else
+                {
+                    if (ButtonController != null)
+                    {
+                        ButtonController.CloseBitSelectionUI();
+                    }
+                    targetConnector = null;
+                }
+            }
+            else
+            {
+                if (ButtonController != null)
+                {
+                    ButtonController.CloseBitSelectionUI();
+                }
+                targetConnector = null;
+            }
+        }
+
+        // 3. عند رفع الإصبع عن زر الماوس
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (ButtonController != null && isDragging)
+            {
+                ButtonController.ShowBitSelectionUI();
+                lineRenderer.SetPosition(1, new Vector3(ButtonController.transform.position.x, ButtonController.transform.position.y, 0f));
+                isDragging = false;
+                return;
+            }
+            if (isDragging && targetConnector != null)
+            {
+                if (CableManager1 != null)
+                {
+                    CableManager1.DisconnectCable();
+                    CableManager1 = null;
+                }
+                
+
+                lineRenderer.SetPosition(1, new Vector3(targetConnector.transform.position.x, targetConnector.transform.position.y, 0f));
+                targetConnector.ConnectCable(this);
+                CableManager1 = targetConnector; 
+                Debug.Log("save cable");
+                isDragging = false;
+            }
+            
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            isDragging = false;
+        }
+
+        if (endPoint != null && !isDragging && targetConnector == null&& ButtonController == null)
+        {
+            if (CableManager1 != null)
+            {
+                if (button_cableManager != null)
+                {
+                    button_cableManager.interactable = true;
+                }
+                CableManager1.DisconnectCable();
+                CableManager1 = null;
+            }
+            lineRenderer.SetPosition(1, new Vector3(endPoint.position.x, endPoint.position.y, 0f));
+        }
+    }
+
+
+}
